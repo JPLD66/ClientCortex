@@ -1,0 +1,1918 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="ClientCortex - Intelligent Client Management Platform. Streamline your workflow, boost productivity, and grow your business.">
+    <title>ClientCortex | Intelligent Client Management</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        /* CSS Variables */
+        :root {
+            --blue-50: #eff6ff;
+            --blue-100: #dbeafe;
+            --blue-200: #bfdbfe;
+            --blue-300: #93c5fd;
+            --blue-400: #60a5fa;
+            --blue-500: #3b82f6;
+            --blue-600: #2563eb;
+            --blue-700: #1d4ed8;
+            --blue-800: #1e40af;
+            --blue-900: #1e3a8a;
+            --gray-50: #f9fafb;
+            --gray-100: #f3f4f6;
+            --gray-200: #e5e7eb;
+            --gray-300: #d1d5db;
+            --gray-400: #9ca3af;
+            --gray-500: #6b7280;
+            --gray-600: #4b5563;
+            --gray-700: #374151;
+            --gray-800: #1f2937;
+            --gray-900: #111827;
+            --white: #ffffff;
+            --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+            --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+            --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+            --shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+        }
+
+        /* Reset & Base */
+        *, *::before, *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            color: var(--gray-800);
+            background-color: var(--white);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Utility Classes */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        .section {
+            padding: 100px 0;
+        }
+
+        .section-light {
+            background: var(--gray-50);
+        }
+
+        .text-center {
+            text-align: center;
+        }
+
+        .text-gradient {
+            background: linear-gradient(135deg, var(--blue-600) 0%, var(--blue-400) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes slideInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes slideInRight {
+            from {
+                opacity: 0;
+                transform: translateX(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        @keyframes shimmer {
+            0% { background-position: -200% 0; }
+            100% { background-position: 200% 0; }
+        }
+
+        @keyframes scaleIn {
+            from {
+                opacity: 0;
+                transform: scale(0.9);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        .animate-fadeInUp {
+            animation: fadeInUp 0.6s ease-out forwards;
+        }
+
+        .animate-fadeInDown {
+            animation: fadeInDown 0.6s ease-out forwards;
+        }
+
+        .animate-fadeIn {
+            animation: fadeIn 0.8s ease-out forwards;
+        }
+
+        .animate-slideInLeft {
+            animation: slideInLeft 0.6s ease-out forwards;
+        }
+
+        .animate-slideInRight {
+            animation: slideInRight 0.6s ease-out forwards;
+        }
+
+        .animate-scaleIn {
+            animation: scaleIn 0.5s ease-out forwards;
+        }
+
+        .delay-100 { animation-delay: 0.1s; }
+        .delay-200 { animation-delay: 0.2s; }
+        .delay-300 { animation-delay: 0.3s; }
+        .delay-400 { animation-delay: 0.4s; }
+        .delay-500 { animation-delay: 0.5s; }
+        .delay-600 { animation-delay: 0.6s; }
+
+        /* Initially hidden for animation */
+        .animate-on-scroll {
+            opacity: 0;
+        }
+
+        .animate-on-scroll.animated {
+            opacity: 1;
+        }
+
+        /* Navigation */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--gray-100);
+            transition: all 0.3s ease;
+        }
+
+        .navbar.scrolled {
+            box-shadow: var(--shadow-md);
+        }
+
+        .navbar-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 72px;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1.5rem;
+            color: var(--gray-900);
+        }
+
+        .logo-icon {
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, var(--blue-600) 0%, var(--blue-400) 100%);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 800;
+            font-size: 1.2rem;
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 40px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--gray-600);
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: color 0.2s ease;
+            position: relative;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--blue-500);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--blue-600);
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .nav-buttons {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 12px 24px;
+            font-size: 0.95rem;
+            font-weight: 600;
+            text-decoration: none;
+            border-radius: 8px;
+            transition: all 0.2s ease;
+            cursor: pointer;
+            border: none;
+        }
+
+        .btn-ghost {
+            background: transparent;
+            color: var(--gray-700);
+        }
+
+        .btn-ghost:hover {
+            background: var(--gray-100);
+            color: var(--gray-900);
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--blue-600) 0%, var(--blue-500) 100%);
+            color: white;
+            box-shadow: 0 4px 14px 0 rgba(37, 99, 235, 0.35);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px 0 rgba(37, 99, 235, 0.45);
+        }
+
+        .btn-secondary {
+            background: var(--white);
+            color: var(--blue-600);
+            border: 2px solid var(--blue-200);
+        }
+
+        .btn-secondary:hover {
+            background: var(--blue-50);
+            border-color: var(--blue-300);
+        }
+
+        .btn-large {
+            padding: 16px 32px;
+            font-size: 1.05rem;
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 8px;
+        }
+
+        .mobile-menu-btn span {
+            width: 24px;
+            height: 2px;
+            background: var(--gray-700);
+            transition: all 0.3s ease;
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 160px 0 100px;
+            background: linear-gradient(180deg, var(--blue-50) 0%, var(--white) 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background:
+                radial-gradient(circle at 20% 20%, rgba(59, 130, 246, 0.08) 0%, transparent 50%),
+                radial-gradient(circle at 80% 80%, rgba(59, 130, 246, 0.05) 0%, transparent 50%);
+            pointer-events: none;
+        }
+
+        .hero-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-text {
+            opacity: 0;
+            animation: fadeInUp 0.8s ease-out 0.2s forwards;
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 16px;
+            background: var(--blue-100);
+            color: var(--blue-700);
+            border-radius: 50px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-bottom: 24px;
+        }
+
+        .hero-badge::before {
+            content: '';
+            width: 8px;
+            height: 8px;
+            background: var(--blue-500);
+            border-radius: 50%;
+            animation: pulse 2s infinite;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            font-weight: 800;
+            line-height: 1.1;
+            color: var(--gray-900);
+            margin-bottom: 24px;
+        }
+
+        .hero p {
+            font-size: 1.25rem;
+            color: var(--gray-600);
+            margin-bottom: 40px;
+            max-width: 540px;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 16px;
+            flex-wrap: wrap;
+        }
+
+        .hero-stats {
+            display: flex;
+            gap: 48px;
+            margin-top: 60px;
+            padding-top: 40px;
+            border-top: 1px solid var(--gray-200);
+        }
+
+        .stat {
+            opacity: 0;
+            animation: fadeInUp 0.6s ease-out forwards;
+        }
+
+        .stat-value {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--blue-600);
+        }
+
+        .stat-label {
+            font-size: 0.9rem;
+            color: var(--gray-500);
+            margin-top: 4px;
+        }
+
+        .hero-visual {
+            position: relative;
+            opacity: 0;
+            animation: slideInRight 0.8s ease-out 0.4s forwards;
+        }
+
+        .hero-image {
+            width: 100%;
+            max-width: 580px;
+            border-radius: 16px;
+            box-shadow: var(--shadow-xl);
+            background: linear-gradient(135deg, var(--blue-100) 0%, var(--blue-50) 100%);
+            aspect-ratio: 4/3;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .dashboard-preview {
+            width: 90%;
+            height: 85%;
+            background: var(--white);
+            border-radius: 12px;
+            box-shadow: var(--shadow-lg);
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .dashboard-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-bottom: 16px;
+            border-bottom: 1px solid var(--gray-100);
+        }
+
+        .dashboard-title {
+            font-weight: 600;
+            color: var(--gray-800);
+        }
+
+        .dashboard-dots {
+            display: flex;
+            gap: 6px;
+        }
+
+        .dashboard-dots span {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+        }
+
+        .dashboard-dots span:nth-child(1) { background: #ef4444; }
+        .dashboard-dots span:nth-child(2) { background: #f59e0b; }
+        .dashboard-dots span:nth-child(3) { background: #22c55e; }
+
+        .dashboard-content {
+            flex: 1;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 12px;
+        }
+
+        .dashboard-card {
+            background: var(--gray-50);
+            border-radius: 8px;
+            padding: 16px;
+            animation: float 3s ease-in-out infinite;
+        }
+
+        .dashboard-card:nth-child(2) { animation-delay: 0.5s; }
+        .dashboard-card:nth-child(3) { animation-delay: 1s; }
+
+        .dashboard-card-value {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--blue-600);
+        }
+
+        .dashboard-card-label {
+            font-size: 0.75rem;
+            color: var(--gray-500);
+            margin-top: 4px;
+        }
+
+        .floating-element {
+            position: absolute;
+            background: var(--white);
+            border-radius: 12px;
+            padding: 16px 20px;
+            box-shadow: var(--shadow-lg);
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            animation: float 4s ease-in-out infinite;
+        }
+
+        .floating-element.top-right {
+            top: -20px;
+            right: -20px;
+            animation-delay: 0.5s;
+        }
+
+        .floating-element.bottom-left {
+            bottom: -20px;
+            left: -20px;
+            animation-delay: 1s;
+        }
+
+        .floating-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+        }
+
+        .floating-icon.green {
+            background: #dcfce7;
+            color: #16a34a;
+        }
+
+        .floating-icon.purple {
+            background: #f3e8ff;
+            color: #9333ea;
+        }
+
+        .floating-text {
+            font-weight: 600;
+            color: var(--gray-800);
+            font-size: 0.9rem;
+        }
+
+        .floating-subtext {
+            font-size: 0.75rem;
+            color: var(--gray-500);
+        }
+
+        /* Logos Section */
+        .logos-section {
+            padding: 60px 0;
+            background: var(--white);
+            border-bottom: 1px solid var(--gray-100);
+        }
+
+        .logos-title {
+            text-align: center;
+            font-size: 0.9rem;
+            color: var(--gray-500);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 40px;
+        }
+
+        .logos-grid {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 60px;
+            flex-wrap: wrap;
+            opacity: 0.6;
+        }
+
+        .logo-item {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--gray-400);
+            transition: all 0.3s ease;
+        }
+
+        .logo-item:hover {
+            color: var(--gray-600);
+        }
+
+        /* Features Section */
+        .features-section {
+            padding: 120px 0;
+            background: var(--white);
+        }
+
+        .section-header {
+            text-align: center;
+            max-width: 700px;
+            margin: 0 auto 80px;
+        }
+
+        .section-label {
+            display: inline-block;
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--blue-600);
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            margin-bottom: 16px;
+        }
+
+        .section-title {
+            font-size: 2.75rem;
+            font-weight: 800;
+            color: var(--gray-900);
+            margin-bottom: 20px;
+            line-height: 1.2;
+        }
+
+        .section-subtitle {
+            font-size: 1.15rem;
+            color: var(--gray-600);
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 32px;
+        }
+
+        .feature-card {
+            background: var(--gray-50);
+            border-radius: 16px;
+            padding: 40px 32px;
+            transition: all 0.3s ease;
+            border: 1px solid transparent;
+            opacity: 0;
+        }
+
+        .feature-card.animated {
+            animation: fadeInUp 0.6s ease-out forwards;
+        }
+
+        .feature-card:hover {
+            background: var(--white);
+            border-color: var(--blue-100);
+            box-shadow: var(--shadow-lg);
+            transform: translateY(-5px);
+        }
+
+        .feature-icon {
+            width: 56px;
+            height: 56px;
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 24px;
+            font-size: 1.5rem;
+            background: linear-gradient(135deg, var(--blue-100) 0%, var(--blue-50) 100%);
+            color: var(--blue-600);
+        }
+
+        .feature-title {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--gray-900);
+            margin-bottom: 12px;
+        }
+
+        .feature-description {
+            font-size: 0.95rem;
+            color: var(--gray-600);
+            line-height: 1.7;
+        }
+
+        /* How It Works */
+        .how-it-works {
+            padding: 120px 0;
+            background: var(--gray-50);
+        }
+
+        .steps-container {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 24px;
+            position: relative;
+        }
+
+        .steps-container::before {
+            content: '';
+            position: absolute;
+            top: 45px;
+            left: 12.5%;
+            right: 12.5%;
+            height: 2px;
+            background: linear-gradient(90deg, var(--blue-200), var(--blue-400), var(--blue-200));
+        }
+
+        .step {
+            text-align: center;
+            position: relative;
+            opacity: 0;
+        }
+
+        .step.animated {
+            animation: fadeInUp 0.6s ease-out forwards;
+        }
+
+        .step-number {
+            width: 90px;
+            height: 90px;
+            border-radius: 50%;
+            background: var(--white);
+            border: 3px solid var(--blue-200);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 24px;
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--blue-600);
+            position: relative;
+            z-index: 1;
+            transition: all 0.3s ease;
+        }
+
+        .step:hover .step-number {
+            background: var(--blue-600);
+            color: var(--white);
+            border-color: var(--blue-600);
+            transform: scale(1.1);
+        }
+
+        .step-title {
+            font-size: 1.15rem;
+            font-weight: 700;
+            color: var(--gray-900);
+            margin-bottom: 8px;
+        }
+
+        .step-description {
+            font-size: 0.9rem;
+            color: var(--gray-600);
+        }
+
+        /* Benefits Section */
+        .benefits-section {
+            padding: 120px 0;
+            background: var(--white);
+        }
+
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+            align-items: center;
+        }
+
+        .benefits-content {
+            opacity: 0;
+        }
+
+        .benefits-content.animated {
+            animation: slideInLeft 0.8s ease-out forwards;
+        }
+
+        .benefits-list {
+            list-style: none;
+            margin-top: 40px;
+        }
+
+        .benefits-list li {
+            display: flex;
+            align-items: flex-start;
+            gap: 16px;
+            margin-bottom: 24px;
+        }
+
+        .benefit-check {
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            background: var(--blue-100);
+            color: var(--blue-600);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            font-weight: 700;
+        }
+
+        .benefit-text h4 {
+            font-size: 1.05rem;
+            font-weight: 600;
+            color: var(--gray-900);
+            margin-bottom: 4px;
+        }
+
+        .benefit-text p {
+            font-size: 0.9rem;
+            color: var(--gray-600);
+        }
+
+        .benefits-visual {
+            position: relative;
+            opacity: 0;
+        }
+
+        .benefits-visual.animated {
+            animation: slideInRight 0.8s ease-out forwards;
+        }
+
+        .benefits-image {
+            width: 100%;
+            aspect-ratio: 1;
+            background: linear-gradient(135deg, var(--blue-100) 0%, var(--blue-50) 100%);
+            border-radius: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+
+        .benefits-graph {
+            width: 80%;
+            height: 70%;
+            background: var(--white);
+            border-radius: 16px;
+            box-shadow: var(--shadow-lg);
+            padding: 24px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .graph-header {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 20px;
+        }
+
+        .graph-title {
+            font-weight: 600;
+            color: var(--gray-800);
+        }
+
+        .graph-badge {
+            background: #dcfce7;
+            color: #16a34a;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+
+        .graph-bars {
+            flex: 1;
+            display: flex;
+            align-items: flex-end;
+            gap: 16px;
+            padding-bottom: 20px;
+            border-bottom: 2px solid var(--gray-100);
+        }
+
+        .graph-bar {
+            flex: 1;
+            background: linear-gradient(180deg, var(--blue-400) 0%, var(--blue-600) 100%);
+            border-radius: 6px 6px 0 0;
+            transition: all 0.3s ease;
+        }
+
+        .graph-bar:nth-child(1) { height: 45%; }
+        .graph-bar:nth-child(2) { height: 65%; }
+        .graph-bar:nth-child(3) { height: 55%; }
+        .graph-bar:nth-child(4) { height: 80%; }
+        .graph-bar:nth-child(5) { height: 70%; }
+        .graph-bar:nth-child(6) { height: 95%; animation: pulse 2s infinite; }
+
+        /* Testimonials */
+        .testimonials-section {
+            padding: 120px 0;
+            background: linear-gradient(180deg, var(--gray-50) 0%, var(--white) 100%);
+        }
+
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 32px;
+        }
+
+        .testimonial-card {
+            background: var(--white);
+            border-radius: 16px;
+            padding: 40px 32px;
+            box-shadow: var(--shadow-md);
+            transition: all 0.3s ease;
+            opacity: 0;
+        }
+
+        .testimonial-card.animated {
+            animation: scaleIn 0.5s ease-out forwards;
+        }
+
+        .testimonial-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-xl);
+        }
+
+        .testimonial-stars {
+            display: flex;
+            gap: 4px;
+            margin-bottom: 20px;
+            color: #fbbf24;
+            font-size: 1.1rem;
+        }
+
+        .testimonial-text {
+            font-size: 1rem;
+            color: var(--gray-700);
+            line-height: 1.8;
+            margin-bottom: 28px;
+            font-style: italic;
+        }
+
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .author-avatar {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--blue-400) 0%, var(--blue-600) 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 700;
+            font-size: 1.1rem;
+        }
+
+        .author-info h4 {
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--gray-900);
+        }
+
+        .author-info p {
+            font-size: 0.85rem;
+            color: var(--gray-500);
+        }
+
+        /* Pricing Section */
+        .pricing-section {
+            padding: 120px 0;
+            background: var(--white);
+        }
+
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 32px;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .pricing-card {
+            background: var(--gray-50);
+            border-radius: 20px;
+            padding: 48px 36px;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+            position: relative;
+            opacity: 0;
+        }
+
+        .pricing-card.animated {
+            animation: fadeInUp 0.6s ease-out forwards;
+        }
+
+        .pricing-card.featured {
+            background: var(--white);
+            border-color: var(--blue-500);
+            transform: scale(1.05);
+            box-shadow: var(--shadow-xl);
+        }
+
+        .pricing-card.featured .pricing-badge {
+            position: absolute;
+            top: -12px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: linear-gradient(135deg, var(--blue-600) 0%, var(--blue-500) 100%);
+            color: white;
+            padding: 6px 20px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+
+        .pricing-name {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--gray-900);
+            margin-bottom: 8px;
+        }
+
+        .pricing-description {
+            font-size: 0.9rem;
+            color: var(--gray-500);
+            margin-bottom: 24px;
+        }
+
+        .pricing-price {
+            display: flex;
+            align-items: baseline;
+            gap: 4px;
+            margin-bottom: 32px;
+        }
+
+        .price-currency {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--gray-800);
+        }
+
+        .price-amount {
+            font-size: 3.5rem;
+            font-weight: 800;
+            color: var(--gray-900);
+            line-height: 1;
+        }
+
+        .price-period {
+            font-size: 1rem;
+            color: var(--gray-500);
+        }
+
+        .pricing-features {
+            list-style: none;
+            margin-bottom: 32px;
+        }
+
+        .pricing-features li {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 10px 0;
+            font-size: 0.95rem;
+            color: var(--gray-700);
+        }
+
+        .pricing-features li::before {
+            content: '✓';
+            color: var(--blue-500);
+            font-weight: 700;
+        }
+
+        .pricing-card .btn {
+            width: 100%;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            padding: 120px 0;
+            background: linear-gradient(135deg, var(--blue-700) 0%, var(--blue-500) 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background:
+                radial-gradient(circle at 20% 50%, rgba(255, 255, 255, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 50%, rgba(255, 255, 255, 0.08) 0%, transparent 50%);
+        }
+
+        .cta-content {
+            text-align: center;
+            max-width: 700px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        .cta-content h2 {
+            font-size: 3rem;
+            font-weight: 800;
+            color: var(--white);
+            margin-bottom: 20px;
+        }
+
+        .cta-content p {
+            font-size: 1.25rem;
+            color: var(--blue-100);
+            margin-bottom: 40px;
+        }
+
+        .cta-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 16px;
+            flex-wrap: wrap;
+        }
+
+        .btn-white {
+            background: var(--white);
+            color: var(--blue-600);
+        }
+
+        .btn-white:hover {
+            background: var(--blue-50);
+            transform: translateY(-2px);
+        }
+
+        .btn-outline-white {
+            background: transparent;
+            color: var(--white);
+            border: 2px solid rgba(255, 255, 255, 0.4);
+        }
+
+        .btn-outline-white:hover {
+            background: rgba(255, 255, 255, 0.1);
+            border-color: rgba(255, 255, 255, 0.6);
+        }
+
+        /* Footer */
+        .footer {
+            background: var(--gray-900);
+            color: var(--gray-400);
+            padding: 80px 0 40px;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr 1fr;
+            gap: 40px;
+            margin-bottom: 60px;
+        }
+
+        .footer-brand .logo {
+            color: var(--white);
+            margin-bottom: 20px;
+        }
+
+        .footer-brand .logo-icon {
+            background: linear-gradient(135deg, var(--blue-500) 0%, var(--blue-400) 100%);
+        }
+
+        .footer-brand p {
+            font-size: 0.95rem;
+            line-height: 1.7;
+            margin-bottom: 24px;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 12px;
+        }
+
+        .social-link {
+            width: 40px;
+            height: 40px;
+            border-radius: 8px;
+            background: var(--gray-800);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--gray-400);
+            text-decoration: none;
+            transition: all 0.2s ease;
+        }
+
+        .social-link:hover {
+            background: var(--blue-600);
+            color: var(--white);
+        }
+
+        .footer-column h4 {
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: var(--white);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 24px;
+        }
+
+        .footer-column ul {
+            list-style: none;
+        }
+
+        .footer-column li {
+            margin-bottom: 12px;
+        }
+
+        .footer-column a {
+            color: var(--gray-400);
+            text-decoration: none;
+            font-size: 0.95rem;
+            transition: color 0.2s ease;
+        }
+
+        .footer-column a:hover {
+            color: var(--blue-400);
+        }
+
+        .footer-bottom {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-top: 40px;
+            border-top: 1px solid var(--gray-800);
+            font-size: 0.9rem;
+        }
+
+        .footer-legal {
+            display: flex;
+            gap: 32px;
+        }
+
+        .footer-legal a {
+            color: var(--gray-500);
+            text-decoration: none;
+            transition: color 0.2s ease;
+        }
+
+        .footer-legal a:hover {
+            color: var(--blue-400);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1024px) {
+            .hero-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .hero-text {
+                order: 1;
+            }
+
+            .hero-visual {
+                order: 2;
+                display: flex;
+                justify-content: center;
+            }
+
+            .hero p {
+                margin-left: auto;
+                margin-right: auto;
+            }
+
+            .hero-buttons {
+                justify-content: center;
+            }
+
+            .hero-stats {
+                justify-content: center;
+            }
+
+            .features-grid,
+            .testimonials-grid,
+            .pricing-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .steps-container {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 40px;
+            }
+
+            .steps-container::before {
+                display: none;
+            }
+
+            .benefits-grid {
+                grid-template-columns: 1fr;
+                gap: 60px;
+            }
+
+            .footer-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .nav-buttons .btn-ghost {
+                display: none;
+            }
+
+            .mobile-menu-btn {
+                display: flex;
+            }
+
+            .hero {
+                padding: 120px 0 80px;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .features-grid,
+            .testimonials-grid,
+            .pricing-grid,
+            .steps-container {
+                grid-template-columns: 1fr;
+            }
+
+            .pricing-card.featured {
+                transform: none;
+            }
+
+            .hero-stats {
+                flex-direction: column;
+                gap: 24px;
+            }
+
+            .cta-content h2 {
+                font-size: 2rem;
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-bottom {
+                flex-direction: column;
+                gap: 20px;
+                text-align: center;
+            }
+
+            .footer-legal {
+                flex-direction: column;
+                gap: 12px;
+            }
+
+            .floating-element {
+                display: none;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .btn-large {
+                width: 100%;
+            }
+
+            .hero-buttons {
+                flex-direction: column;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .cta-buttons .btn {
+                width: 100%;
+                max-width: 280px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container navbar-content">
+            <a href="#" class="logo">
+                <div class="logo-icon">C</div>
+                <span>ClientCortex</span>
+            </a>
+            <ul class="nav-links">
+                <li><a href="#features">Features</a></li>
+                <li><a href="#how-it-works">How It Works</a></li>
+                <li><a href="#pricing">Pricing</a></li>
+                <li><a href="#testimonials">Testimonials</a></li>
+            </ul>
+            <div class="nav-buttons">
+                <a href="#" class="btn btn-ghost">Log In</a>
+                <a href="#" class="btn btn-primary">Get Started</a>
+            </div>
+            <button class="mobile-menu-btn" aria-label="Menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container hero-content">
+            <div class="hero-text">
+                <div class="hero-badge">New: AI-Powered Insights</div>
+                <h1>Manage Clients <span class="text-gradient">Smarter</span>, Not Harder</h1>
+                <p>The intelligent client management platform that streamlines your workflow, automates repetitive tasks, and helps you build stronger relationships.</p>
+                <div class="hero-buttons">
+                    <a href="#" class="btn btn-primary btn-large">Start Free Trial</a>
+                    <a href="#" class="btn btn-secondary btn-large">Watch Demo</a>
+                </div>
+                <div class="hero-stats">
+                    <div class="stat delay-300">
+                        <div class="stat-value">10K+</div>
+                        <div class="stat-label">Active Users</div>
+                    </div>
+                    <div class="stat delay-400">
+                        <div class="stat-value">98%</div>
+                        <div class="stat-label">Satisfaction Rate</div>
+                    </div>
+                    <div class="stat delay-500">
+                        <div class="stat-value">50M+</div>
+                        <div class="stat-label">Tasks Automated</div>
+                    </div>
+                </div>
+            </div>
+            <div class="hero-visual">
+                <div class="hero-image">
+                    <div class="dashboard-preview">
+                        <div class="dashboard-header">
+                            <span class="dashboard-title">Dashboard Overview</span>
+                            <div class="dashboard-dots">
+                                <span></span>
+                                <span></span>
+                                <span></span>
+                            </div>
+                        </div>
+                        <div class="dashboard-content">
+                            <div class="dashboard-card">
+                                <div class="dashboard-card-value">247</div>
+                                <div class="dashboard-card-label">Active Clients</div>
+                            </div>
+                            <div class="dashboard-card">
+                                <div class="dashboard-card-value">89%</div>
+                                <div class="dashboard-card-label">Retention Rate</div>
+                            </div>
+                            <div class="dashboard-card">
+                                <div class="dashboard-card-value">$124K</div>
+                                <div class="dashboard-card-label">Monthly Revenue</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="floating-element top-right">
+                    <div class="floating-icon green">✓</div>
+                    <div>
+                        <div class="floating-text">Task Completed</div>
+                        <div class="floating-subtext">Client onboarding finished</div>
+                    </div>
+                </div>
+                <div class="floating-element bottom-left">
+                    <div class="floating-icon purple">⚡</div>
+                    <div>
+                        <div class="floating-text">AI Insight</div>
+                        <div class="floating-subtext">3 clients need follow-up</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Trusted By -->
+    <section class="logos-section">
+        <div class="container">
+            <p class="logos-title">Trusted by leading companies worldwide</p>
+            <div class="logos-grid">
+                <span class="logo-item">Stripe</span>
+                <span class="logo-item">Slack</span>
+                <span class="logo-item">Notion</span>
+                <span class="logo-item">Figma</span>
+                <span class="logo-item">Linear</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features-section section" id="features">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-label">Features</span>
+                <h2 class="section-title">Everything You Need to Succeed</h2>
+                <p class="section-subtitle">Powerful tools designed to help you manage clients efficiently and grow your business faster.</p>
+            </div>
+            <div class="features-grid">
+                <div class="feature-card animate-on-scroll">
+                    <div class="feature-icon">📊</div>
+                    <h3 class="feature-title">Smart Analytics</h3>
+                    <p class="feature-description">Get real-time insights into client behavior, engagement metrics, and revenue trends with our AI-powered analytics dashboard.</p>
+                </div>
+                <div class="feature-card animate-on-scroll">
+                    <div class="feature-icon">🔄</div>
+                    <h3 class="feature-title">Workflow Automation</h3>
+                    <p class="feature-description">Automate repetitive tasks like follow-ups, reminders, and status updates. Save hours every week while never missing a beat.</p>
+                </div>
+                <div class="feature-card animate-on-scroll">
+                    <div class="feature-icon">💬</div>
+                    <h3 class="feature-title">Unified Communication</h3>
+                    <p class="feature-description">Centralize all client communications in one place. Email, chat, calls, and meetings—all seamlessly integrated.</p>
+                </div>
+                <div class="feature-card animate-on-scroll">
+                    <div class="feature-icon">🎯</div>
+                    <h3 class="feature-title">Client Segmentation</h3>
+                    <p class="feature-description">Organize clients by custom attributes, engagement levels, or revenue potential. Target the right clients with the right message.</p>
+                </div>
+                <div class="feature-card animate-on-scroll">
+                    <div class="feature-icon">📅</div>
+                    <h3 class="feature-title">Smart Scheduling</h3>
+                    <p class="feature-description">Let clients book meetings based on your availability. Automatic timezone detection and calendar sync included.</p>
+                </div>
+                <div class="feature-card animate-on-scroll">
+                    <div class="feature-icon">🔒</div>
+                    <h3 class="feature-title">Enterprise Security</h3>
+                    <p class="feature-description">Bank-level encryption, SSO integration, and compliance with GDPR, SOC2, and HIPAA. Your data stays protected.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works -->
+    <section class="how-it-works section" id="how-it-works">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-label">How It Works</span>
+                <h2 class="section-title">Get Started in Minutes</h2>
+                <p class="section-subtitle">Four simple steps to transform your client management process.</p>
+            </div>
+            <div class="steps-container">
+                <div class="step animate-on-scroll">
+                    <div class="step-number">1</div>
+                    <h3 class="step-title">Sign Up</h3>
+                    <p class="step-description">Create your account in seconds. No credit card required.</p>
+                </div>
+                <div class="step animate-on-scroll">
+                    <div class="step-number">2</div>
+                    <h3 class="step-title">Import Clients</h3>
+                    <p class="step-description">Bring your existing data from spreadsheets or other tools.</p>
+                </div>
+                <div class="step animate-on-scroll">
+                    <div class="step-number">3</div>
+                    <h3 class="step-title">Set Up Workflows</h3>
+                    <p class="step-description">Configure automations tailored to your process.</p>
+                </div>
+                <div class="step animate-on-scroll">
+                    <div class="step-number">4</div>
+                    <h3 class="step-title">Grow Your Business</h3>
+                    <p class="step-description">Focus on relationships while we handle the rest.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Benefits Section -->
+    <section class="benefits-section section">
+        <div class="container benefits-grid">
+            <div class="benefits-content animate-on-scroll">
+                <span class="section-label">Why Choose Us</span>
+                <h2 class="section-title">Built for Teams That Care About Clients</h2>
+                <p class="section-subtitle">Join thousands of businesses that have transformed their client relationships with ClientCortex.</p>
+                <ul class="benefits-list">
+                    <li>
+                        <span class="benefit-check">✓</span>
+                        <div class="benefit-text">
+                            <h4>Save 10+ Hours Weekly</h4>
+                            <p>Automate administrative tasks and focus on what matters—your clients.</p>
+                        </div>
+                    </li>
+                    <li>
+                        <span class="benefit-check">✓</span>
+                        <div class="benefit-text">
+                            <h4>Increase Retention by 40%</h4>
+                            <p>Never miss a follow-up with smart reminders and engagement tracking.</p>
+                        </div>
+                    </li>
+                    <li>
+                        <span class="benefit-check">✓</span>
+                        <div class="benefit-text">
+                            <h4>Scale Without Complexity</h4>
+                            <p>Handle 10 or 10,000 clients with the same simple workflow.</p>
+                        </div>
+                    </li>
+                    <li>
+                        <span class="benefit-check">✓</span>
+                        <div class="benefit-text">
+                            <h4>Integrate with Your Stack</h4>
+                            <p>Connect with 100+ tools including Slack, Zoom, Stripe, and more.</p>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            <div class="benefits-visual animate-on-scroll">
+                <div class="benefits-image">
+                    <div class="benefits-graph">
+                        <div class="graph-header">
+                            <span class="graph-title">Revenue Growth</span>
+                            <span class="graph-badge">+127%</span>
+                        </div>
+                        <div class="graph-bars">
+                            <div class="graph-bar"></div>
+                            <div class="graph-bar"></div>
+                            <div class="graph-bar"></div>
+                            <div class="graph-bar"></div>
+                            <div class="graph-bar"></div>
+                            <div class="graph-bar"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="testimonials-section section" id="testimonials">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-label">Testimonials</span>
+                <h2 class="section-title">Loved by Businesses Worldwide</h2>
+                <p class="section-subtitle">See what our customers have to say about their experience.</p>
+            </div>
+            <div class="testimonials-grid">
+                <div class="testimonial-card animate-on-scroll">
+                    <div class="testimonial-stars">★★★★★</div>
+                    <p class="testimonial-text">"ClientCortex has completely transformed how we manage our agency clients. We've reduced response time by 60% and our clients love the seamless experience."</p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">SK</div>
+                        <div class="author-info">
+                            <h4>Sarah Kim</h4>
+                            <p>CEO, Digital Wave Agency</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card animate-on-scroll">
+                    <div class="testimonial-stars">★★★★★</div>
+                    <p class="testimonial-text">"The automation features alone have saved our team over 20 hours per week. The ROI was visible within the first month. Absolutely game-changing."</p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">MJ</div>
+                        <div class="author-info">
+                            <h4>Marcus Johnson</h4>
+                            <p>Operations Director, TechStart</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card animate-on-scroll">
+                    <div class="testimonial-stars">★★★★★</div>
+                    <p class="testimonial-text">"We evaluated 15 different CRM tools before choosing ClientCortex. The intuitive interface and powerful features made it an easy decision."</p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">EL</div>
+                        <div class="author-info">
+                            <h4>Emily Liu</h4>
+                            <p>Founder, Growth Partners</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing -->
+    <section class="pricing-section section" id="pricing">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-label">Pricing</span>
+                <h2 class="section-title">Simple, Transparent Pricing</h2>
+                <p class="section-subtitle">Choose the plan that fits your business. All plans include a 14-day free trial.</p>
+            </div>
+            <div class="pricing-grid">
+                <div class="pricing-card animate-on-scroll">
+                    <h3 class="pricing-name">Starter</h3>
+                    <p class="pricing-description">Perfect for freelancers and small teams</p>
+                    <div class="pricing-price">
+                        <span class="price-currency">$</span>
+                        <span class="price-amount">29</span>
+                        <span class="price-period">/month</span>
+                    </div>
+                    <ul class="pricing-features">
+                        <li>Up to 100 clients</li>
+                        <li>Basic analytics</li>
+                        <li>Email integration</li>
+                        <li>5 automated workflows</li>
+                        <li>Email support</li>
+                    </ul>
+                    <a href="#" class="btn btn-secondary">Start Free Trial</a>
+                </div>
+                <div class="pricing-card featured animate-on-scroll">
+                    <span class="pricing-badge">Most Popular</span>
+                    <h3 class="pricing-name">Professional</h3>
+                    <p class="pricing-description">For growing businesses and teams</p>
+                    <div class="pricing-price">
+                        <span class="price-currency">$</span>
+                        <span class="price-amount">79</span>
+                        <span class="price-period">/month</span>
+                    </div>
+                    <ul class="pricing-features">
+                        <li>Up to 1,000 clients</li>
+                        <li>Advanced analytics & reports</li>
+                        <li>All integrations</li>
+                        <li>Unlimited workflows</li>
+                        <li>Priority support</li>
+                    </ul>
+                    <a href="#" class="btn btn-primary">Start Free Trial</a>
+                </div>
+                <div class="pricing-card animate-on-scroll">
+                    <h3 class="pricing-name">Enterprise</h3>
+                    <p class="pricing-description">For large organizations</p>
+                    <div class="pricing-price">
+                        <span class="price-currency">$</span>
+                        <span class="price-amount">199</span>
+                        <span class="price-period">/month</span>
+                    </div>
+                    <ul class="pricing-features">
+                        <li>Unlimited clients</li>
+                        <li>Custom analytics</li>
+                        <li>API access</li>
+                        <li>SSO & advanced security</li>
+                        <li>Dedicated account manager</li>
+                    </ul>
+                    <a href="#" class="btn btn-secondary">Contact Sales</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="container cta-content">
+            <h2>Ready to Transform Your Client Management?</h2>
+            <p>Join 10,000+ businesses already using ClientCortex to build stronger client relationships.</p>
+            <div class="cta-buttons">
+                <a href="#" class="btn btn-white btn-large">Start Your Free Trial</a>
+                <a href="#" class="btn btn-outline-white btn-large">Schedule a Demo</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <a href="#" class="logo">
+                        <div class="logo-icon">C</div>
+                        <span>ClientCortex</span>
+                    </a>
+                    <p>The intelligent client management platform for modern businesses. Streamline your workflow and grow stronger relationships.</p>
+                    <div class="social-links">
+                        <a href="#" class="social-link" aria-label="Twitter">𝕏</a>
+                        <a href="#" class="social-link" aria-label="LinkedIn">in</a>
+                        <a href="#" class="social-link" aria-label="GitHub">⌘</a>
+                    </div>
+                </div>
+                <div class="footer-column">
+                    <h4>Product</h4>
+                    <ul>
+                        <li><a href="#">Features</a></li>
+                        <li><a href="#">Pricing</a></li>
+                        <li><a href="#">Integrations</a></li>
+                        <li><a href="#">Changelog</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h4>Company</h4>
+                    <ul>
+                        <li><a href="#">About</a></li>
+                        <li><a href="#">Blog</a></li>
+                        <li><a href="#">Careers</a></li>
+                        <li><a href="#">Press</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h4>Resources</h4>
+                    <ul>
+                        <li><a href="#">Documentation</a></li>
+                        <li><a href="#">Help Center</a></li>
+                        <li><a href="#">Community</a></li>
+                        <li><a href="#">Status</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h4>Legal</h4>
+                    <ul>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Terms of Service</a></li>
+                        <li><a href="#">Cookie Policy</a></li>
+                        <li><a href="#">GDPR</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 ClientCortex. All rights reserved.</p>
+                <div class="footer-legal">
+                    <a href="#">Privacy</a>
+                    <a href="#">Terms</a>
+                    <a href="#">Cookies</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scroll Animation Script -->
+    <script>
+        // Navbar scroll effect
+        const navbar = document.querySelector('.navbar');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        // Intersection Observer for scroll animations
+        const observerOptions = {
+            root: null,
+            rootMargin: '0px',
+            threshold: 0.1
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach((entry, index) => {
+                if (entry.isIntersecting) {
+                    // Add staggered delay based on element position
+                    const siblings = entry.target.parentElement.querySelectorAll('.animate-on-scroll');
+                    const elementIndex = Array.from(siblings).indexOf(entry.target);
+
+                    setTimeout(() => {
+                        entry.target.classList.add('animated');
+                    }, elementIndex * 100);
+
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        // Observe all elements with animate-on-scroll class
+        document.querySelectorAll('.animate-on-scroll').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Smooth scroll for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
