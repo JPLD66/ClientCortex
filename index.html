@@ -102,7 +102,8 @@
 
         .logo img {
             height: 40px;
-            width: auto;
+            width: 40px;
+            object-fit: contain;
         }
 
         .logo-text {
@@ -697,12 +698,15 @@
 
         .about-card h3 {
             font-size: 1.25rem;
-            margin-bottom: 8px;
+            margin-bottom: 20px;
         }
 
-        .about-card .subtitle {
-            color: var(--text-muted);
-            font-size: 1rem;
+        .about-card .profile-pic {
+            width: 120px;
+            height: 120px;
+            object-fit: cover;
+            border: 2px solid var(--red-neon);
+            box-shadow: 0 0 20px rgba(220, 38, 38, 0.3);
         }
 
         .about-text {
@@ -771,6 +775,14 @@
             margin: 0 auto;
         }
 
+        .cta-logo {
+            width: 80px;
+            height: 80px;
+            object-fit: contain;
+            margin-bottom: 32px;
+            filter: drop-shadow(0 0 20px rgba(220, 38, 38, 0.4));
+        }
+
         .cta-content h2 {
             font-size: clamp(1.75rem, 4vw, 2.25rem);
             margin-bottom: 24px;
@@ -812,7 +824,7 @@
     <nav>
         <div class="container">
             <div class="logo">
-                <img src="assets/logo.jpg" alt="Client Cortex" class="logo-img">
+                <img src="assets/logo resized.png" alt="Client Cortex" class="logo-img">
             </div>
             <a href="#contact" class="nav-cta">Email Me</a>
         </div>
@@ -821,7 +833,6 @@
     <section class="hero">
         <div class="container">
             <div class="hero-content">
-                <img src="assets/logo.jpg" alt="Client Cortex" class="hero-logo">
                 <span class="hero-badge">AI-Powered Creative Strategy System</span>
                 <h1>Client Cortex Helps:</h1>
 
@@ -1031,7 +1042,7 @@
                 <div class="about-card">
                     <div class="label">The Operator</div>
                     <h3>Maarten Vaerewijck</h3>
-                    <p class="subtitle">(Just call me Martin)</p>
+                    <img src="assets/MeBWtp.png" alt="Maarten Vaerewijck" class="profile-pic">
                 </div>
 
                 <div class="about-text">
@@ -1058,6 +1069,7 @@
     <section class="cta-section" id="contact">
         <div class="container">
             <div class="cta-content">
+                <img src="assets/logo resized.png" alt="Client Cortex" class="cta-logo">
                 <span class="section-label">Get Started</span>
                 <h2>Ready to Install Client Cortex?</h2>
                 <p>Reach out directly. Tell me about your agency and I'll show you how Client Cortex can deliver for you.</p>
