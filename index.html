@@ -840,6 +840,66 @@
             font-size: 1.1rem;
         }
 
+        /* Testimonials Section */
+        .testimonials-section {
+            background: var(--bg-black);
+            padding: 100px 0;
+        }
+
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+        }
+
+        @media (max-width: 900px) {
+            .testimonials-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+        }
+
+        .testimonial-card {
+            background: var(--bg-panel);
+            border: 1px solid var(--border-dark);
+            border-left: 3px solid var(--red-neon);
+            padding: 32px;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .testimonial-card blockquote {
+            color: var(--text-gray);
+            font-size: 1rem;
+            line-height: 1.7;
+            font-style: italic;
+        }
+
+        .testimonial-card blockquote strong {
+            color: var(--text-white);
+            font-style: normal;
+        }
+
+        .testimonial-author {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+
+        .testimonial-author .name {
+            color: var(--text-white);
+            font-weight: 600;
+            font-size: 1rem;
+        }
+
+        .testimonial-author .title {
+            color: var(--red-neon);
+            font-size: 0.85rem;
+            font-family: 'Orbitron', monospace;
+            letter-spacing: 0.05em;
+        }
+
         /* Footer */
         footer {
             padding: 40px 0;
@@ -1023,6 +1083,43 @@
                             </svg>
                         </div>
                         <p><strong>Client presentations</strong> with <strong>AI visuals</strong> deployed in minutes</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="section-divider"></div>
+
+    <section class="testimonials-section" id="testimonials">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-label">Proof</span>
+                <h2>I Deliver Results</h2>
+            </div>
+
+            <div class="testimonials-grid">
+                <div class="testimonial-card">
+                    <blockquote>"My client's ad creatives were slowly fatiguing and I needed new scripts ASAP. Maarten did the research, crafted multiple scripts, and came up with new big ideas that I had never considered. <strong>The ads made from Maarten's scripts have been part of our control group for over 6 months now.</strong>"</blockquote>
+                    <div class="testimonial-author">
+                        <span class="name">Joshua Gatewood</span>
+                        <span class="title">Mass Conversions Digital</span>
+                    </div>
+                </div>
+
+                <div class="testimonial-card">
+                    <blockquote>"I would HIGHLY recommend Maarten for building AI tools/workflows for your business. The guy downloaded my mind and <strong>created a golden agentic workflow</strong> to help my clients create sales pages."</blockquote>
+                    <div class="testimonial-author">
+                        <span class="name">Zac Hansen</span>
+                        <span class="title">7-fig Coach</span>
+                    </div>
+                </div>
+
+                <div class="testimonial-card">
+                    <blockquote>"Maarten is one of those rare people who just gets how to build sales funnels that work. We've done it together on multiple 7-figure projects. He's brilliant at writing copy that connects, coming up with marketing strategies that drive results, and fine-tuning funnels to maximise performance."</blockquote>
+                    <div class="testimonial-author">
+                        <span class="name">Darius Lukas</span>
+                        <span class="title">Hyper Entrepreneur</span>
                     </div>
                 </div>
             </div>
