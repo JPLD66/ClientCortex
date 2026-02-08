@@ -1,0 +1,1235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Client Cortex for Founders</title>
+    <meta name="description" content="Client Cortex helps your creative strategists find unique, high-performance ad angles in seconds. Onboard new hires in 3 days, not 3 weeks.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&family=Rajdhani:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-black: #000000;
+            --bg-dark: #0a0a0a;
+            --bg-panel: #111111;
+            --red-neon: #dc2626;
+            --red-glow: #ef4444;
+            --red-dark: #991b1b;
+            --red-darker: #7f1d1d;
+            --text-white: #ffffff;
+            --text-gray: #a3a3a3;
+            --text-muted: #737373;
+            --border-dark: #262626;
+            --border-red: rgba(220, 38, 38, 0.4);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            overflow-x: hidden;
+        }
+
+        body {
+            font-family: 'Rajdhani', sans-serif;
+            background: var(--bg-black);
+            color: var(--text-white);
+            line-height: 1.6;
+            overflow-x: hidden;
+            max-width: 100vw;
+        }
+
+        /* Scan line overlay */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: repeating-linear-gradient(
+                0deg,
+                transparent,
+                transparent 2px,
+                rgba(0, 0, 0, 0.1) 2px,
+                rgba(0, 0, 0, 0.1) 4px
+            );
+            pointer-events: none;
+            z-index: 1000;
+            opacity: 0.3;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* Typography */
+        h1, h2, h3, .section-label {
+            font-family: 'Orbitron', monospace;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 100;
+            padding: 16px 0;
+            background: rgba(0, 0, 0, 0.95);
+            border-bottom: 1px solid var(--red-neon);
+            box-shadow: 0 0 20px rgba(220, 38, 38, 0.3);
+        }
+
+        nav .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .logo img {
+            height: 50px;
+            width: auto;
+            object-fit: contain;
+        }
+
+        .logo-text {
+            font-family: 'Orbitron', monospace;
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--text-white);
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+        }
+
+        .nav-cta {
+            padding: 12px 28px;
+            background: transparent;
+            color: var(--red-neon);
+            text-decoration: none;
+            font-family: 'Orbitron', monospace;
+            font-weight: 600;
+            font-size: 0.8rem;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            border: 2px solid var(--red-neon);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .nav-cta::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: var(--red-neon);
+            transition: left 0.3s ease;
+            z-index: -1;
+        }
+
+        .nav-cta:hover {
+            color: var(--bg-black);
+            box-shadow: 0 0 30px rgba(220, 38, 38, 0.5);
+        }
+
+        .nav-cta:hover::before {
+            left: 0;
+        }
+
+        @media (max-width: 600px) {
+            nav {
+                padding: 12px 0;
+            }
+
+            nav .container {
+                padding: 0 12px;
+                gap: 8px;
+            }
+
+            .logo img {
+                height: 36px;
+                width: auto;
+            }
+
+            .nav-cta {
+                padding: 6px 12px;
+                font-size: 0.65rem;
+                letter-spacing: 0.05em;
+                white-space: nowrap;
+            }
+
+            .cta-button {
+                padding: 14px 24px;
+                font-size: 0.7rem;
+                gap: 10px;
+                max-width: 100%;
+                word-break: break-all;
+            }
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            padding: 120px 0 80px;
+            position: relative;
+            background:
+                radial-gradient(ellipse at 50% 0%, rgba(220, 38, 38, 0.15) 0%, transparent 50%),
+                var(--bg-black);
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--red-neon), transparent);
+        }
+
+        .hero-content {
+            text-align: center;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .hero-logo {
+            width: 180px;
+            height: auto;
+            margin-bottom: 40px;
+            filter: drop-shadow(0 0 30px rgba(220, 38, 38, 0.5));
+        }
+
+        .hero-badge {
+            display: inline-block;
+            padding: 8px 20px;
+            background: rgba(220, 38, 38, 0.1);
+            border: 1px solid var(--border-red);
+            font-family: 'Orbitron', monospace;
+            font-size: 0.7rem;
+            color: var(--red-neon);
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            margin-bottom: 32px;
+        }
+
+        .hero h1 {
+            font-size: clamp(2rem, 5vw, 3.5rem);
+            font-weight: 700;
+            margin-bottom: 48px;
+            line-height: 1.2;
+        }
+
+        .hero-benefits {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            margin-bottom: 56px;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .hero-benefit {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            padding: 20px 28px;
+            background: var(--bg-panel);
+            border: 1px solid var(--border-dark);
+            border-left: 3px solid var(--red-neon);
+            text-align: left;
+            transition: all 0.3s ease;
+        }
+
+        .hero-benefit:hover {
+            border-color: var(--red-neon);
+            background: rgba(220, 38, 38, 0.05);
+            box-shadow: 0 0 30px rgba(220, 38, 38, 0.1);
+            transform: translateX(8px);
+        }
+
+        .hero-benefit .icon {
+            flex-shrink: 0;
+            width: 48px;
+            height: 48px;
+            background: rgba(220, 38, 38, 0.1);
+            border: 1px solid var(--border-red);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .hero-benefit .icon svg {
+            width: 24px;
+            height: 24px;
+            stroke: var(--red-neon);
+        }
+
+        .hero-benefit .text {
+            font-size: 1.1rem;
+            font-weight: 500;
+        }
+
+        .hero-benefit strong {
+            color: var(--red-neon);
+        }
+
+        .cta-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 16px;
+            padding: 20px 48px;
+            background: var(--red-neon);
+            color: var(--bg-black);
+            text-decoration: none;
+            font-family: 'Orbitron', monospace;
+            font-weight: 700;
+            font-size: 0.9rem;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            transition: all 0.3s ease;
+            box-shadow: 0 0 40px rgba(220, 38, 38, 0.4);
+            border: none;
+        }
+
+        .cta-button:hover {
+            background: var(--red-glow);
+            box-shadow: 0 0 60px rgba(220, 38, 38, 0.6);
+            transform: scale(1.02);
+        }
+
+        .cta-button svg {
+            transition: transform 0.3s ease;
+        }
+
+        .cta-button:hover svg {
+            transform: translateX(4px);
+        }
+
+        /* Section Styling */
+        section {
+            padding: 100px 0;
+            position: relative;
+        }
+
+        .section-label {
+            display: inline-block;
+            font-size: 0.7rem;
+            color: var(--red-neon);
+            letter-spacing: 0.3em;
+            margin-bottom: 16px;
+            padding: 6px 16px;
+            background: rgba(220, 38, 38, 0.1);
+            border: 1px solid var(--border-red);
+        }
+
+        .section-header {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto 64px;
+        }
+
+        .section-header h2 {
+            font-size: clamp(1.75rem, 4vw, 2.5rem);
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+
+        .section-header p {
+            color: var(--text-gray);
+            font-size: 1.125rem;
+        }
+
+        /* Section Divider */
+        .section-divider {
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--red-neon), transparent);
+            margin: 0;
+        }
+
+        /* How It Works - The Combination */
+        .how-it-works {
+            background: var(--bg-dark);
+        }
+
+        .combination-visual {
+            display: grid;
+            grid-template-columns: 1fr auto 1fr;
+            gap: 32px;
+            align-items: stretch;
+            margin-bottom: 80px;
+        }
+
+        @media (max-width: 900px) {
+            .combination-visual {
+                grid-template-columns: 1fr;
+                gap: 24px;
+            }
+        }
+
+        .data-panel {
+            background: var(--bg-panel);
+            border: 1px solid var(--border-dark);
+            padding: 32px;
+            position: relative;
+        }
+
+        .data-panel::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 4px;
+            height: 100%;
+            background: var(--red-neon);
+        }
+
+        .data-panel h3 {
+            font-size: 0.8rem;
+            color: var(--red-neon);
+            margin-bottom: 24px;
+            letter-spacing: 0.2em;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .data-panel h3::before {
+            content: '';
+            width: 8px;
+            height: 8px;
+            background: var(--red-neon);
+            box-shadow: 0 0 10px var(--red-neon);
+        }
+
+        .data-panel ul {
+            list-style: none;
+        }
+
+        .data-panel li {
+            padding: 14px 0;
+            color: var(--text-gray);
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            border-bottom: 1px solid var(--border-dark);
+            font-size: 1rem;
+            font-weight: 500;
+        }
+
+        .data-panel li:last-child {
+            border-bottom: none;
+        }
+
+        .data-panel li::before {
+            content: '›';
+            color: var(--red-neon);
+            font-size: 1.25rem;
+            font-weight: bold;
+        }
+
+        .combo-connector {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .combo-plus {
+            width: 72px;
+            height: 72px;
+            background: var(--red-neon);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Orbitron', monospace;
+            font-size: 2.5rem;
+            font-weight: 300;
+            color: var(--bg-black);
+            box-shadow: 0 0 40px rgba(220, 38, 38, 0.5);
+        }
+
+        @media (max-width: 900px) {
+            .combo-plus {
+                width: 56px;
+                height: 56px;
+                font-size: 2rem;
+            }
+        }
+
+        /* Output Section */
+        .output-section {
+            margin-top: 80px;
+        }
+
+        .output-header {
+            text-align: center;
+            margin-bottom: 48px;
+        }
+
+        .output-header h3 {
+            font-size: 1.25rem;
+            color: var(--text-white);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        .output-header h3::before,
+        .output-header h3::after {
+            content: '';
+            width: 60px;
+            height: 1px;
+            background: var(--red-neon);
+        }
+
+        .output-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+
+        @media (max-width: 900px) {
+            .output-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 600px) {
+            .output-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .output-card {
+            background: var(--bg-panel);
+            border: 1px solid var(--border-dark);
+            padding: 28px;
+            position: relative;
+            transition: all 0.3s ease;
+            overflow: hidden;
+        }
+
+        .output-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: var(--red-neon);
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.3s ease;
+        }
+
+        .output-card:hover {
+            border-color: var(--red-neon);
+            background: rgba(220, 38, 38, 0.03);
+        }
+
+        .output-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .output-card .card-icon {
+            width: 44px;
+            height: 44px;
+            background: rgba(220, 38, 38, 0.1);
+            border: 1px solid var(--border-red);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+
+        .output-card .card-icon svg {
+            width: 22px;
+            height: 22px;
+            stroke: var(--red-neon);
+        }
+
+        .output-card p {
+            color: var(--text-gray);
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        .output-card strong {
+            color: var(--text-white);
+            font-weight: 600;
+        }
+
+        /* Installation Steps */
+        .steps-section {
+            background: var(--bg-black);
+        }
+
+        .steps-timeline {
+            position: relative;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .steps-timeline::before {
+            content: '';
+            position: absolute;
+            left: 40px;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: linear-gradient(180deg, var(--red-neon), var(--red-dark));
+        }
+
+        @media (max-width: 600px) {
+            .steps-timeline::before {
+                left: 24px;
+            }
+        }
+
+        .step {
+            display: flex;
+            gap: 40px;
+            margin-bottom: 48px;
+            position: relative;
+        }
+
+        .step:last-child {
+            margin-bottom: 0;
+        }
+
+        .step-number {
+            flex-shrink: 0;
+            width: 80px;
+            height: 80px;
+            background: var(--bg-black);
+            border: 2px solid var(--red-neon);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Orbitron', monospace;
+            font-size: 1.75rem;
+            font-weight: 700;
+            color: var(--red-neon);
+            position: relative;
+            z-index: 1;
+            box-shadow: 0 0 30px rgba(220, 38, 38, 0.3);
+        }
+
+        @media (max-width: 600px) {
+            .step-number {
+                width: 48px;
+                height: 48px;
+                font-size: 1.25rem;
+            }
+            .step {
+                gap: 24px;
+            }
+        }
+
+        .step-content {
+            flex: 1;
+            background: var(--bg-panel);
+            border: 1px solid var(--border-dark);
+            padding: 32px;
+            border-left: 3px solid var(--red-neon);
+        }
+
+        .step-content h3 {
+            font-size: 1.1rem;
+            margin-bottom: 20px;
+            color: var(--text-white);
+        }
+
+        .step-content ul {
+            list-style: none;
+        }
+
+        .step-content li {
+            padding: 10px 0;
+            color: var(--text-gray);
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            font-size: 1rem;
+        }
+
+        .step-content li::before {
+            content: '→';
+            color: var(--red-neon);
+            font-weight: bold;
+            flex-shrink: 0;
+        }
+
+        /* About Section */
+        .about-section {
+            background: var(--bg-dark);
+        }
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: 300px 1fr;
+            gap: 64px;
+            align-items: start;
+        }
+
+        @media (max-width: 800px) {
+            .about-grid {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+        }
+
+        .about-card {
+            background: var(--bg-panel);
+            border: 1px solid var(--border-dark);
+            padding: 32px;
+            text-align: center;
+            position: sticky;
+            top: 120px;
+        }
+
+        .about-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: var(--red-neon);
+        }
+
+        .about-card .label {
+            font-family: 'Orbitron', monospace;
+            font-size: 0.65rem;
+            color: var(--red-neon);
+            letter-spacing: 0.25em;
+            text-transform: uppercase;
+            margin-bottom: 16px;
+        }
+
+        .about-card h3 {
+            font-size: 1.25rem;
+            margin-bottom: 20px;
+        }
+
+        .about-card .profile-pic {
+            width: 120px;
+            height: 120px;
+            object-fit: cover;
+            border: 2px solid var(--red-neon);
+            box-shadow: 0 0 20px rgba(220, 38, 38, 0.3);
+        }
+
+        .about-text {
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+        }
+
+        .about-text p {
+            color: var(--text-gray);
+            font-size: 1.0625rem;
+            line-height: 1.8;
+        }
+
+        .about-text strong {
+            color: var(--text-white);
+        }
+
+        .highlight-block {
+            padding: 28px;
+            background: rgba(220, 38, 38, 0.08);
+            border: 1px solid var(--border-red);
+            border-left: 4px solid var(--red-neon);
+            margin: 24px 0;
+        }
+
+        .highlight-block p {
+            color: var(--text-white) !important;
+            font-weight: 500;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            background: var(--bg-black);
+            text-align: center;
+            padding: 120px 0;
+            position: relative;
+        }
+
+        .cta-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--red-neon), transparent);
+        }
+
+        .cta-section::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 600px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(220, 38, 38, 0.1) 0%, transparent 70%);
+            pointer-events: none;
+        }
+
+        .cta-content {
+            position: relative;
+            z-index: 1;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .cta-logo {
+            width: 180px;
+            height: 180px;
+            object-fit: contain;
+            margin: 24px auto 32px;
+            display: block;
+            filter: drop-shadow(0 0 30px rgba(220, 38, 38, 0.5));
+        }
+
+        .cta-content h2 {
+            font-size: clamp(1.75rem, 4vw, 2.25rem);
+            margin-bottom: 24px;
+        }
+
+        .cta-content p {
+            color: var(--text-gray);
+            margin-bottom: 40px;
+            font-size: 1.125rem;
+        }
+
+        .cta-icon-only {
+            padding: 20px 28px;
+            gap: 0;
+        }
+
+        .email-text {
+            margin-top: 20px;
+            margin-bottom: 0 !important;
+            color: var(--text-white);
+            font-size: 1.1rem;
+        }
+
+        /* Testimonials Section */
+        .testimonials-section {
+            background: var(--bg-black);
+            padding: 100px 0;
+        }
+
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+        }
+
+        @media (max-width: 900px) {
+            .testimonials-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+        }
+
+        .testimonial-card {
+            background: var(--bg-panel);
+            border: 1px solid var(--border-dark);
+            border-left: 3px solid var(--red-neon);
+            padding: 32px;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .testimonial-card blockquote {
+            color: var(--text-gray);
+            font-size: 1rem;
+            line-height: 1.7;
+            font-style: italic;
+        }
+
+        .testimonial-card blockquote strong {
+            color: var(--text-white);
+            font-style: normal;
+        }
+
+        .testimonial-author {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+
+        .testimonial-author .name {
+            color: var(--text-white);
+            font-weight: 600;
+            font-size: 1rem;
+        }
+
+        .testimonial-author .title {
+            color: var(--red-neon);
+            font-size: 0.85rem;
+            font-family: 'Orbitron', monospace;
+            letter-spacing: 0.05em;
+        }
+
+        /* Footer */
+        footer {
+            padding: 40px 0;
+            border-top: 1px solid var(--border-dark);
+            text-align: center;
+            background: var(--bg-black);
+        }
+
+        footer p {
+            color: var(--text-muted);
+            font-size: 0.875rem;
+            font-family: 'Orbitron', monospace;
+            letter-spacing: 0.1em;
+        }
+
+        /* Animations */
+        @keyframes pulse-glow {
+            0%, 100% { box-shadow: 0 0 20px rgba(220, 38, 38, 0.3); }
+            50% { box-shadow: 0 0 40px rgba(220, 38, 38, 0.5); }
+        }
+
+        .pulse {
+            animation: pulse-glow 2s ease-in-out infinite;
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="container">
+            <div class="logo">
+                <img src="../assets/CCLogoName.png" alt="Client Cortex" class="logo-img">
+            </div>
+            <a href="#contact" class="nav-cta">Email Me</a>
+        </div>
+    </nav>
+
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <span class="hero-badge">AI-Powered Creative Strategy System</span>
+                <h1>Client Cortex Helps:</h1>
+
+                <div class="hero-benefits">
+                    <div class="hero-benefit">
+                        <div class="icon">
+                            <svg fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M13 10V3L4 14h7v7l9-11h-7z"/>
+                            </svg>
+                        </div>
+                        <div class="text">
+                            <strong>Your Creative Strategists</strong> find unique, high-performance ad angles in seconds
+                        </div>
+                    </div>
+
+                    <div class="hero-benefit">
+                        <div class="icon">
+                            <svg fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                            </svg>
+                        </div>
+                        <div class="text">
+                            <strong>Your Team</strong> onboard new hires in 3 days (not 3 weeks)
+                        </div>
+                    </div>
+
+                    <div class="hero-benefit">
+                        <div class="icon">
+                            <svg fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"/>
+                            </svg>
+                        </div>
+                        <div class="text">
+                            <strong>Your VAs</strong> deliver hard-hitting static ads with pre-trained Gemini 3.0
+                        </div>
+                    </div>
+                </div>
+
+                <a href="#contact" class="cta-button pulse">
+                    Email Me
+                    <svg width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
+                    </svg>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <section class="how-it-works" id="how">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-label">The System</span>
+                <h2>How Does It Work?</h2>
+                <p>Client Cortex combines two mission-critical components.</p>
+            </div>
+
+            <div class="combination-visual">
+                <div class="data-panel">
+                    <h3>Input 01: Client Data</h3>
+                    <ul>
+                        <li>Brand info & product benefits</li>
+                        <li>Hundreds of reviews & testimonials</li>
+                        <li>Deep dive customer data</li>
+                        <li>Competitor analysis</li>
+                        <li>Performance reports</li>
+                        <li>Compliance guidelines</li>
+                    </ul>
+                </div>
+
+                <div class="combo-connector">
+                    <div class="combo-plus">+</div>
+                </div>
+
+                <div class="data-panel">
+                    <h3>Input 02: DR Frameworks</h3>
+                    <ul>
+                        <li>Direct Response copy templates</li>
+                        <li>High-performing ad breakdowns</li>
+                        <li>The 7 primary emotional drivers</li>
+                        <li>Market awareness stages</li>
+                        <li>$1,000+ Copywriting courses</li>
+                        <li>And more — each cortex is unique</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="output-section">
+                <div class="output-header">
+                    <h3>System Output</h3>
+                </div>
+
+                <div class="output-grid">
+                    <div class="output-card">
+                        <div class="card-icon">
+                            <svg fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 12h3.75M9 15h3.75M9 18h3.75m3 .75H18a2.25 2.25 0 002.25-2.25V6.108c0-1.135-.845-2.098-1.976-2.192a48.424 48.424 0 00-1.123-.08m-5.801 0c-.065.21-.1.433-.1.664 0 .414.336.75.75.75h4.5a.75.75 0 00.75-.75 2.25 2.25 0 00-.1-.664m-5.8 0A2.251 2.251 0 0113.5 2.25H15c1.012 0 1.867.668 2.15 1.586m-5.8 0c-.376.023-.75.05-1.124.08C9.095 4.01 8.25 4.973 8.25 6.108V8.25m0 0H4.875c-.621 0-1.125.504-1.125 1.125v11.25c0 .621.504 1.125 1.125 1.125h9.75c.621 0 1.125-.504 1.125-1.125V9.375c0-.621-.504-1.125-1.125-1.125H8.25zM6.75 12h.008v.008H6.75V12zm0 3h.008v.008H6.75V15zm0 3h.008v.008H6.75V18z"/>
+                            </svg>
+                        </div>
+                        <p><strong>Client + Product briefs</strong> that onboard new strategists and copywriters FAST</p>
+                    </div>
+
+                    <div class="output-card">
+                        <div class="card-icon">
+                            <svg fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 18v-5.25m0 0a6.01 6.01 0 001.5-.189m-1.5.189a6.01 6.01 0 01-1.5-.189m3.75 7.478a12.06 12.06 0 01-4.5 0m3.75 2.383a14.406 14.406 0 01-3 0M14.25 18v-.192c0-.983.658-1.823 1.508-2.316a7.5 7.5 0 10-7.517 0c.85.493 1.509 1.333 1.509 2.316V18"/>
+                            </svg>
+                        </div>
+                        <p>Pre-load <strong>100+ unique & specific</strong> top <strong>Ad Ideas</strong></p>
+                    </div>
+
+                    <div class="output-card">
+                        <div class="card-icon">
+                            <svg fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4.26 10.147a60.436 60.436 0 00-.491 6.347A48.627 48.627 0 0112 20.904a48.627 48.627 0 018.232-4.41 60.46 60.46 0 00-.491-6.347m-15.482 0a50.57 50.57 0 00-2.658-.813A59.905 59.905 0 0112 3.493a59.902 59.902 0 0110.399 5.84c-.896.248-1.783.52-2.658.814m-15.482 0A50.697 50.697 0 0112 13.489a50.702 50.702 0 017.74-3.342M6.75 15a.75.75 0 100-1.5.75.75 0 000 1.5zm0 0v-3.675A55.378 55.378 0 0112 8.443m-7.007 11.55A5.981 5.981 0 006.75 15.75v-1.5"/>
+                            </svg>
+                        </div>
+                        <p><strong>Train your team</strong> weekly with <strong>senior-level knowledge & skills</strong></p>
+                    </div>
+
+                    <div class="output-card">
+                        <div class="card-icon">
+                            <svg fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 18.75a6 6 0 006-6v-1.5m-6 7.5a6 6 0 01-6-6v-1.5m6 7.5v3.75m-3.75 0h7.5M12 15.75a3 3 0 01-3-3V4.5a3 3 0 116 0v8.25a3 3 0 01-3 3z"/>
+                            </svg>
+                        </div>
+                        <p><strong>10 min AI podcasts</strong> for 'client mindset' — faster workflow each morning</p>
+                    </div>
+
+                    <div class="output-card">
+                        <div class="card-icon">
+                            <svg fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17.25 6.75L22.5 12l-5.25 5.25m-10.5 0L1.5 12l5.25-5.25m7.5-3l-4.5 16.5"/>
+                            </svg>
+                        </div>
+                        <p><strong>Bot prompts</strong> for <strong>Claude</strong> & <strong>Gemini</strong> — VAs make junior-level ads</p>
+                    </div>
+
+                    <div class="output-card">
+                        <div class="card-icon">
+                            <svg fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3.75 3v11.25A2.25 2.25 0 006 16.5h2.25M3.75 3h-1.5m1.5 0h16.5m0 0h1.5m-1.5 0v11.25A2.25 2.25 0 0118 16.5h-2.25m-7.5 0h7.5m-7.5 0l-1 3m8.5-3l1 3m0 0l.5 1.5m-.5-1.5h-9.5m0 0l-.5 1.5M9 11.25v1.5M12 9v3.75m3-6v6"/>
+                            </svg>
+                        </div>
+                        <p><strong>Client presentations</strong> with <strong>AI visuals</strong> deployed in minutes</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="section-divider"></div>
+
+    <section class="testimonials-section" id="testimonials">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-label">Proof</span>
+                <h2>I Deliver Results</h2>
+            </div>
+
+            <div class="testimonials-grid">
+                <div class="testimonial-card">
+                    <blockquote>"My client's ad creatives were slowly fatiguing and I needed new scripts ASAP. Maarten did the research, crafted multiple scripts, and came up with new big ideas that I had never considered. <strong>The ads made from Maarten's scripts have been part of our control group for over 6 months now.</strong>"</blockquote>
+                    <div class="testimonial-author">
+                        <span class="name">Joshua Gatewood</span>
+                        <span class="title">Mass Conversions Digital</span>
+                    </div>
+                </div>
+
+                <div class="testimonial-card">
+                    <blockquote>"I would HIGHLY recommend Maarten for building AI tools/workflows for your business. The guy downloaded my mind and <strong>created a golden agentic workflow</strong> to help my clients create sales pages."</blockquote>
+                    <div class="testimonial-author">
+                        <span class="name">Zac Hansen</span>
+                        <span class="title">7-fig Coach</span>
+                    </div>
+                </div>
+
+                <div class="testimonial-card">
+                    <blockquote>"Maarten is one of those rare people who just gets how to build sales funnels that work. We've done it together on multiple 7-figure projects. He's brilliant at writing copy that connects, coming up with marketing strategies that drive results, and fine-tuning funnels to maximise performance."</blockquote>
+                    <div class="testimonial-author">
+                        <span class="name">Darius Lukas</span>
+                        <span class="title">Hyper Entrepreneur</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="section-divider"></div>
+
+    <section class="steps-section" id="steps">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-label">Installation Protocol</span>
+                <h2>How We Install Client Cortex</h2>
+                <p>3 phases to transform your creative workflow</p>
+            </div>
+
+            <div class="steps-timeline">
+                <div class="step">
+                    <div class="step-number">01</div>
+                    <div class="step-content">
+                        <h3>Phase 1: Your Effort-Free Library</h3>
+                        <ul>
+                            <li>Together with you or your assistant, we organise your internal documents into Client Cortex</li>
+                            <li>Thousands of reviews in 1 place — easily scanned</li>
+                            <li>Repeat this for each client or offer</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="step">
+                    <div class="step-number">02</div>
+                    <div class="step-content">
+                        <h3>Phase 2: Activate The Brain</h3>
+                        <ul>
+                            <li>We upload dozens of proprietary copywriting, creative strategy, and marketing frameworks</li>
+                            <li>Connect those to client files to get curated output 100% secure within Google's TOS</li>
+                            <li>Set up custom onboarding, ideation, and research reports that cut out 100s of work hours</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="step">
+                    <div class="step-number">03</div>
+                    <div class="step-content">
+                        <h3>Phase 3: Team Training</h3>
+                        <ul>
+                            <li>We prepare your team to run the machine</li>
+                            <li>SOPs and Training Videos to your creative strategists, directors, and VAs</li>
+                            <li>Guidelines like how to create 100 ad ideas each week per client</li>
+                            <li>How to deploy 3-min pitch decks and AI-made infographics to impress at client meetings</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="section-divider"></div>
+
+    <section class="about-section" id="about">
+        <div class="container">
+            <div class="about-grid">
+                <div class="about-card">
+                    <div class="label">The Operator</div>
+                    <h3>Maarten Vaerewijck</h3>
+                    <img src="../assets/MeBWtp.png" alt="Maarten Vaerewijck" class="profile-pic">
+                </div>
+
+                <div class="about-text">
+                    <p>Here's why Client Cortex works: it's built on <strong>7+ years of direct response copy</strong> I wrote for brands spending <strong>$1M+/month on ads</strong>.</p>
+
+                    <p>VSLs. Emails. Landers. Ad scripts. For 8 and 9-figure DTC brands like <strong>4Patriots</strong>, <strong>LifeVac</strong>, and <strong>ShopSolar</strong>.</p>
+
+                    <p>I was <strong>CMO for Darius Lukas</strong>. We launched multiple 7-figure funnels in 9 months. One hit <strong>$66k profit in 10 days</strong>.</p>
+
+                    <p>As Chief Creative Strategist, my ads have hit <strong>10%+ CTR</strong> and <strong>3+ ROAS</strong>.</p>
+
+                    <p>People pay me to come up with big ideas that print money. That's what I do.</p>
+
+                    <p>Problem is: <strong>you can't hire me full-time anymore.</strong></p>
+
+                    <p>So here's the next best thing.</p>
+
+                    <p><strong>Client Cortex installs my brain into your agency.</strong> Every framework. Every ideation method. Every compliance protocol. Baked into a system your strategists, copywriters, and VAs can access 24/7 — without the $150/hour invoice.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="cta-section" id="contact">
+        <div class="container">
+            <div class="cta-content">
+                <span class="section-label">Get Started</span>
+                <img src="../assets/LogoTP1.png" alt="Client Cortex" class="cta-logo">
+                <h2>Ready to Install Client Cortex?</h2>
+                <p>Reach out directly. Tell me about your agency and I'll show you how Client Cortex can deliver for you.</p>
+                <a href="mailto:Maarten@ClientCortex.EU" class="cta-button cta-icon-only pulse">
+                    <svg width="24" height="24" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+                    </svg>
+                </a>
+                <p class="email-text"><strong>Maarten@ClientCortex.EU</strong></p>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 Client Cortex. All Rights Reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>
