@@ -664,27 +664,23 @@
 
         .step-content ul {
             list-style: none;
-            display: flex;
-            flex-direction: column;
             width: 100%;
         }
 
         .step-content li {
             padding: 10px 0;
+            padding-left: 24px;
             color: var(--text-gray);
-            display: flex;
-            flex-direction: row;
-            align-items: flex-start;
-            gap: 12px;
             font-size: 1rem;
-            width: 100%;
+            position: relative;
         }
 
         .step-content li::before {
             content: '→';
             color: var(--red-neon);
             font-weight: bold;
-            flex-shrink: 0;
+            position: absolute;
+            left: 0;
         }
 
         /* About Section */
