@@ -278,8 +278,24 @@
         .hero h1 {
             font-size: clamp(2rem, 5vw, 3.5rem);
             font-weight: 700;
-            margin-bottom: 48px;
+            margin-bottom: 16px;
             line-height: 1.2;
+        }
+
+        .hero-subtitle {
+            font-size: 1rem;
+            color: var(--text-gray);
+            margin-bottom: 48px;
+        }
+
+        .hero-subtitle a {
+            color: var(--red-neon);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .hero-subtitle a:hover {
+            color: var(--red-glow);
         }
 
         .hero-benefits {
@@ -995,7 +1011,8 @@
         <div class="container">
             <div class="hero-content">
                 <span class="hero-badge">AI-Powered Creative Strategy System</span>
-                <h1>Client Cortex Helps:</h1>
+                <h1>Client Cortex for Agencies Helps:</h1>
+                <p class="hero-subtitle"><em>Not an agency? <a href="founders/">Check out Client Cortex for Founders</a></em></p>
 
                 <div class="hero-benefits">
                     <div class="hero-benefit">
