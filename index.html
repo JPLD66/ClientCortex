@@ -138,6 +138,27 @@
             text-transform: uppercase;
         }
 
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 24px;
+        }
+
+        .nav-link {
+            color: var(--text-gray);
+            text-decoration: none;
+            font-family: 'Orbitron', monospace;
+            font-weight: 500;
+            font-size: 0.75rem;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            transition: color 0.3s ease;
+        }
+
+        .nav-link:hover {
+            color: var(--red-neon);
+        }
+
         .nav-cta {
             padding: 12px 28px;
             background: transparent;
@@ -936,6 +957,16 @@
             letter-spacing: 0.1em;
         }
 
+        footer a {
+            color: var(--text-gray);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        footer a:hover {
+            color: var(--red-neon);
+        }
+
         /* Animations */
         @keyframes pulse-glow {
             0%, 100% { box-shadow: 0 0 20px rgba(220, 38, 38, 0.3); }
@@ -953,7 +984,10 @@
             <div class="logo">
                 <img src="assets/CCLogoName.png" alt="Client Cortex" class="logo-img">
             </div>
-            <a href="#contact" class="nav-cta">Email Me</a>
+            <div class="nav-links">
+                <a href="founders/" class="nav-link">For Founders</a>
+                <a href="#contact" class="nav-cta">Email Me</a>
+            </div>
         </div>
     </nav>
 
@@ -1249,7 +1283,7 @@
 
     <footer>
         <div class="container">
-            <p>&copy; 2026 Client Cortex. All Rights Reserved.</p>
+            <p>&copy; 2026 Client Cortex. All Rights Reserved. Made by <a href="https://vaerewijck.com" target="_blank" rel="noopener noreferrer">Maarten Vaerewijck</a></p>
         </div>
     </footer>
 </body>
