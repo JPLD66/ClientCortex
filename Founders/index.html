@@ -664,15 +664,20 @@
 
         .step-content ul {
             list-style: none;
+            display: flex;
+            flex-direction: column;
+            width: 100%;
         }
 
         .step-content li {
             padding: 10px 0;
             color: var(--text-gray);
             display: flex;
+            flex-direction: row;
             align-items: flex-start;
             gap: 12px;
             font-size: 1rem;
+            width: 100%;
         }
 
         .step-content li::before {
