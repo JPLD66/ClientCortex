@@ -944,6 +944,16 @@
             letter-spacing: 0.1em;
         }
 
+        footer a {
+            color: var(--text-gray);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        footer a:hover {
+            color: var(--red-neon);
+        }
+
         /* Animations */
         @keyframes pulse-glow {
             0%, 100% { box-shadow: 0 0 20px rgba(220, 38, 38, 0.3); }
@@ -958,9 +968,9 @@
 <body>
     <nav>
         <div class="container">
-            <div class="logo">
+            <a href="https://clientcortex.eu" class="logo">
                 <img src="../assets/CCLogoName.png" alt="Client Cortex" class="logo-img">
-            </div>
+            </a>
             <a href="#contact" class="nav-cta">Email Me</a>
         </div>
     </nav>
@@ -1281,7 +1291,7 @@
 
     <footer>
         <div class="container">
-            <p>&copy; 2026 Founder Cortex by Client Cortex. All Rights Reserved.</p>
+            <p>&copy; 2026 Founder Cortex by Client Cortex. All Rights Reserved. Made by <a href="https://vaerewijck.com" target="_blank" rel="noopener noreferrer">Maarten Vaerewijck</a></p>
         </div>
     </footer>
 </body>
