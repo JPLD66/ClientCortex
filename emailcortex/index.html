@@ -1,0 +1,1294 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Founder Cortex | Clone Your Voice. Free Your Time.</title>
+    <meta name="description" content="Founder Cortex helps your copywriters nail your voice on ads, emails, and sales pages — without you rewriting everything.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&family=Rajdhani:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-black: #000000;
+            --bg-dark: #0a0a0a;
+            --bg-panel: #111111;
+            --red-neon: #2563eb;
+            --red-glow: #3b82f6;
+            --red-dark: #1d4ed8;
+            --red-darker: #1e3a8a;
+            --text-white: #ffffff;
+            --text-gray: #a3a3a3;
+            --text-muted: #737373;
+            --border-dark: #262626;
+            --border-red: rgba(37, 99, 235, 0.4);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            overflow-x: hidden;
+        }
+
+        body {
+            font-family: 'Rajdhani', sans-serif;
+            background: var(--bg-black);
+            color: var(--text-white);
+            line-height: 1.6;
+            overflow-x: hidden;
+            max-width: 100vw;
+        }
+
+        /* Scan line overlay */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: repeating-linear-gradient(
+                0deg,
+                transparent,
+                transparent 2px,
+                rgba(0, 0, 0, 0.1) 2px,
+                rgba(0, 0, 0, 0.1) 4px
+            );
+            pointer-events: none;
+            z-index: 1000;
+            opacity: 0.3;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* Typography */
+        h1, h2, h3, .section-label {
+            font-family: 'Orbitron', monospace;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 100;
+            padding: 16px 0;
+            background: rgba(0, 0, 0, 0.95);
+            border-bottom: 1px solid var(--red-neon);
+            box-shadow: 0 0 20px rgba(37, 99, 235, 0.3);
+        }
+
+        nav .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .logo img {
+            height: 50px;
+            width: auto;
+            object-fit: contain;
+        }
+
+        .logo-text {
+            font-family: 'Orbitron', monospace;
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--text-white);
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+        }
+
+        .nav-cta {
+            padding: 12px 28px;
+            background: transparent;
+            color: var(--red-neon);
+            text-decoration: none;
+            font-family: 'Orbitron', monospace;
+            font-weight: 600;
+            font-size: 0.8rem;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            border: 2px solid var(--red-neon);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .nav-cta::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: var(--red-neon);
+            transition: left 0.3s ease;
+            z-index: -1;
+        }
+
+        .nav-cta:hover {
+            color: var(--bg-black);
+            box-shadow: 0 0 30px rgba(37, 99, 235, 0.5);
+        }
+
+        .nav-cta:hover::before {
+            left: 0;
+        }
+
+        @media (max-width: 600px) {
+            nav {
+                padding: 12px 0;
+            }
+
+            nav .container {
+                padding: 0 12px;
+                gap: 8px;
+            }
+
+            .logo img {
+                height: 36px;
+                width: auto;
+            }
+
+            .nav-cta {
+                padding: 6px 12px;
+                font-size: 0.65rem;
+                letter-spacing: 0.05em;
+                white-space: nowrap;
+            }
+
+            .cta-button {
+                padding: 14px 24px;
+                font-size: 0.7rem;
+                gap: 10px;
+                max-width: 100%;
+                word-break: break-all;
+            }
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            padding: 120px 0 80px;
+            position: relative;
+            background:
+                radial-gradient(ellipse at 50% 0%, rgba(37, 99, 235, 0.15) 0%, transparent 50%),
+                var(--bg-black);
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--red-neon), transparent);
+        }
+
+        .hero-content {
+            text-align: center;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .hero-logo {
+            width: 180px;
+            height: auto;
+            margin-bottom: 40px;
+            filter: drop-shadow(0 0 30px rgba(37, 99, 235, 0.5));
+        }
+
+        .hero-badge {
+            display: inline-block;
+            padding: 8px 20px;
+            background: rgba(37, 99, 235, 0.1);
+            border: 1px solid var(--border-red);
+            font-family: 'Orbitron', monospace;
+            font-size: 0.7rem;
+            color: var(--red-neon);
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            margin-bottom: 32px;
+        }
+
+        .hero h1 {
+            font-size: clamp(2rem, 5vw, 3.5rem);
+            font-weight: 700;
+            margin-bottom: 48px;
+            line-height: 1.2;
+        }
+
+        .hero-benefits {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            margin-bottom: 56px;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .hero-benefit {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            padding: 20px 28px;
+            background: var(--bg-panel);
+            border: 1px solid var(--border-dark);
+            border-left: 3px solid var(--red-neon);
+            text-align: left;
+            transition: all 0.3s ease;
+        }
+
+        .hero-benefit:hover {
+            border-color: var(--red-neon);
+            background: rgba(37, 99, 235, 0.05);
+            box-shadow: 0 0 30px rgba(37, 99, 235, 0.1);
+            transform: translateX(8px);
+        }
+
+        .hero-benefit .icon {
+            flex-shrink: 0;
+            width: 48px;
+            height: 48px;
+            background: rgba(37, 99, 235, 0.1);
+            border: 1px solid var(--border-red);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .hero-benefit .icon svg {
+            width: 24px;
+            height: 24px;
+            stroke: var(--red-neon);
+        }
+
+        .hero-benefit .text {
+            font-size: 1.1rem;
+            font-weight: 500;
+        }
+
+        .hero-benefit strong {
+            color: var(--red-neon);
+        }
+
+        .cta-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 16px;
+            padding: 20px 48px;
+            background: var(--red-neon);
+            color: var(--bg-black);
+            text-decoration: none;
+            font-family: 'Orbitron', monospace;
+            font-weight: 700;
+            font-size: 0.9rem;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            transition: all 0.3s ease;
+            box-shadow: 0 0 40px rgba(37, 99, 235, 0.4);
+            border: none;
+        }
+
+        .cta-button:hover {
+            background: var(--red-glow);
+            box-shadow: 0 0 60px rgba(37, 99, 235, 0.6);
+            transform: scale(1.02);
+        }
+
+        .cta-button svg {
+            transition: transform 0.3s ease;
+        }
+
+        .cta-button:hover svg {
+            transform: translateX(4px);
+        }
+
+        /* Section Styling */
+        section {
+            padding: 100px 0;
+            position: relative;
+        }
+
+        .section-label {
+            display: inline-block;
+            font-size: 0.7rem;
+            color: var(--red-neon);
+            letter-spacing: 0.3em;
+            margin-bottom: 16px;
+            padding: 6px 16px;
+            background: rgba(37, 99, 235, 0.1);
+            border: 1px solid var(--border-red);
+        }
+
+        .section-header {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto 64px;
+        }
+
+        .section-header h2 {
+            font-size: clamp(1.75rem, 4vw, 2.5rem);
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+
+        .section-header p {
+            color: var(--text-gray);
+            font-size: 1.125rem;
+        }
+
+        /* Section Divider */
+        .section-divider {
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--red-neon), transparent);
+            margin: 0;
+        }
+
+        /* How It Works - The Combination */
+        .how-it-works {
+            background: var(--bg-dark);
+        }
+
+        .combination-visual {
+            display: grid;
+            grid-template-columns: 1fr auto 1fr;
+            gap: 32px;
+            align-items: stretch;
+            margin-bottom: 80px;
+        }
+
+        @media (max-width: 900px) {
+            .combination-visual {
+                grid-template-columns: 1fr;
+                gap: 24px;
+            }
+        }
+
+        .data-panel {
+            background: var(--bg-panel);
+            border: 1px solid var(--border-dark);
+            padding: 32px;
+            position: relative;
+        }
+
+        .data-panel::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 4px;
+            height: 100%;
+            background: var(--red-neon);
+        }
+
+        .data-panel h3 {
+            font-size: 0.8rem;
+            color: var(--red-neon);
+            margin-bottom: 24px;
+            letter-spacing: 0.2em;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .data-panel h3::before {
+            content: '';
+            width: 8px;
+            height: 8px;
+            background: var(--red-neon);
+            box-shadow: 0 0 10px var(--red-neon);
+        }
+
+        .data-panel ul {
+            list-style: none;
+        }
+
+        .data-panel li {
+            padding: 14px 0;
+            color: var(--text-gray);
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            border-bottom: 1px solid var(--border-dark);
+            font-size: 1rem;
+            font-weight: 500;
+        }
+
+        .data-panel li:last-child {
+            border-bottom: none;
+        }
+
+        .data-panel li::before {
+            content: '›';
+            color: var(--red-neon);
+            font-size: 1.25rem;
+            font-weight: bold;
+        }
+
+        .combo-connector {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .combo-plus {
+            width: 72px;
+            height: 72px;
+            background: var(--red-neon);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Orbitron', monospace;
+            font-size: 2.5rem;
+            font-weight: 300;
+            color: var(--bg-black);
+            box-shadow: 0 0 40px rgba(37, 99, 235, 0.5);
+        }
+
+        @media (max-width: 900px) {
+            .combo-plus {
+                width: 56px;
+                height: 56px;
+                font-size: 2rem;
+            }
+        }
+
+        /* Output Section */
+        .output-section {
+            margin-top: 80px;
+        }
+
+        .output-header {
+            text-align: center;
+            margin-bottom: 48px;
+        }
+
+        .output-header h3 {
+            font-size: 1.25rem;
+            color: var(--text-white);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        .output-header h3::before,
+        .output-header h3::after {
+            content: '';
+            width: 60px;
+            height: 1px;
+            background: var(--red-neon);
+        }
+
+        .output-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+
+        @media (max-width: 900px) {
+            .output-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 600px) {
+            .output-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .output-card {
+            background: var(--bg-panel);
+            border: 1px solid var(--border-dark);
+            padding: 28px;
+            position: relative;
+            transition: all 0.3s ease;
+            overflow: hidden;
+        }
+
+        .output-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: var(--red-neon);
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.3s ease;
+        }
+
+        .output-card:hover {
+            border-color: var(--red-neon);
+            background: rgba(37, 99, 235, 0.03);
+        }
+
+        .output-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .output-card .card-icon {
+            width: 44px;
+            height: 44px;
+            background: rgba(37, 99, 235, 0.1);
+            border: 1px solid var(--border-red);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+
+        .output-card .card-icon svg {
+            width: 22px;
+            height: 22px;
+            stroke: var(--red-neon);
+        }
+
+        .output-card p {
+            color: var(--text-gray);
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        .output-card strong {
+            color: var(--text-white);
+            font-weight: 600;
+        }
+
+        /* Installation Steps */
+        .steps-section {
+            background: var(--bg-black);
+        }
+
+        .steps-timeline {
+            position: relative;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .steps-timeline::before {
+            content: '';
+            position: absolute;
+            left: 40px;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: linear-gradient(180deg, var(--red-neon), var(--red-dark));
+        }
+
+        @media (max-width: 600px) {
+            .steps-timeline::before {
+                left: 24px;
+            }
+        }
+
+        .step {
+            display: flex;
+            gap: 40px;
+            margin-bottom: 48px;
+            position: relative;
+        }
+
+        .step:last-child {
+            margin-bottom: 0;
+        }
+
+        .step-number {
+            flex-shrink: 0;
+            width: 80px;
+            height: 80px;
+            background: var(--bg-black);
+            border: 2px solid var(--red-neon);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Orbitron', monospace;
+            font-size: 1.75rem;
+            font-weight: 700;
+            color: var(--red-neon);
+            position: relative;
+            z-index: 1;
+            box-shadow: 0 0 30px rgba(37, 99, 235, 0.3);
+        }
+
+        @media (max-width: 600px) {
+            .step-number {
+                width: 48px;
+                height: 48px;
+                font-size: 1.25rem;
+            }
+            .step {
+                gap: 24px;
+            }
+        }
+
+        .step-content {
+            flex: 1;
+            background: var(--bg-panel);
+            border: 1px solid var(--border-dark);
+            padding: 32px;
+            border-left: 3px solid var(--red-neon);
+        }
+
+        .step-content h3 {
+            font-size: 1.1rem;
+            margin-bottom: 20px;
+            color: var(--text-white);
+        }
+
+        .step-content ul {
+            list-style: none;
+            width: 100%;
+        }
+
+        .step-content li {
+            padding: 10px 0;
+            padding-left: 24px;
+            color: var(--text-gray);
+            font-size: 1rem;
+            position: relative;
+        }
+
+        .step-content li::before {
+            content: '→';
+            color: var(--red-neon);
+            font-weight: bold;
+            position: absolute;
+            left: 0;
+        }
+
+        /* About Section */
+        .about-section {
+            background: var(--bg-dark);
+        }
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: 300px 1fr;
+            gap: 64px;
+            align-items: start;
+        }
+
+        @media (max-width: 800px) {
+            .about-grid {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+        }
+
+        .about-card {
+            background: var(--bg-panel);
+            border: 1px solid var(--border-dark);
+            padding: 32px;
+            text-align: center;
+            position: sticky;
+            top: 120px;
+        }
+
+        .about-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: var(--red-neon);
+        }
+
+        .about-card .label {
+            font-family: 'Orbitron', monospace;
+            font-size: 0.65rem;
+            color: var(--red-neon);
+            letter-spacing: 0.25em;
+            text-transform: uppercase;
+            margin-bottom: 16px;
+        }
+
+        .about-card h3 {
+            font-size: 1.25rem;
+            margin-bottom: 20px;
+        }
+
+        .about-card .profile-pic {
+            width: 120px;
+            height: 120px;
+            object-fit: cover;
+            border: 2px solid var(--red-neon);
+            box-shadow: 0 0 20px rgba(37, 99, 235, 0.3);
+        }
+
+        .about-text {
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+        }
+
+        .about-text p {
+            color: var(--text-gray);
+            font-size: 1.0625rem;
+            line-height: 1.8;
+        }
+
+        .about-text strong {
+            color: var(--text-white);
+        }
+
+        .highlight-block {
+            padding: 28px;
+            background: rgba(37, 99, 235, 0.08);
+            border: 1px solid var(--border-red);
+            border-left: 4px solid var(--red-neon);
+            margin: 24px 0;
+        }
+
+        .highlight-block p {
+            color: var(--text-white) !important;
+            font-weight: 500;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            background: var(--bg-black);
+            text-align: center;
+            padding: 120px 0;
+            position: relative;
+        }
+
+        .cta-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--red-neon), transparent);
+        }
+
+        .cta-section::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 600px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(37, 99, 235, 0.1) 0%, transparent 70%);
+            pointer-events: none;
+        }
+
+        .cta-content {
+            position: relative;
+            z-index: 1;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .cta-logo {
+            width: 180px;
+            height: 180px;
+            object-fit: contain;
+            margin: 24px auto 32px;
+            display: block;
+            filter: drop-shadow(0 0 30px rgba(37, 99, 235, 0.5));
+        }
+
+        .cta-content h2 {
+            font-size: clamp(1.75rem, 4vw, 2.25rem);
+            margin-bottom: 24px;
+        }
+
+        .cta-content p {
+            color: var(--text-gray);
+            margin-bottom: 40px;
+            font-size: 1.125rem;
+        }
+
+        .cta-icon-only {
+            padding: 20px 28px;
+            gap: 0;
+        }
+
+        .email-text {
+            margin-top: 20px;
+            margin-bottom: 0 !important;
+            color: var(--text-white);
+            font-size: 1.1rem;
+        }
+
+        .linkedin-text {
+            margin-top: 32px;
+            margin-bottom: 16px !important;
+            color: var(--text-gray);
+            font-size: 1rem;
+        }
+
+        .linkedin-link {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--red-neon);
+            transition: all 0.3s ease;
+        }
+
+        .linkedin-link:hover {
+            color: var(--red-glow);
+            transform: scale(1.1);
+        }
+
+        .linkedin-link svg {
+            filter: drop-shadow(0 0 8px rgba(37, 99, 235, 0.5));
+        }
+
+        /* Testimonials Section */
+        .testimonials-section {
+            background: var(--bg-black);
+            padding: 100px 0;
+        }
+
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+        }
+
+        @media (max-width: 900px) {
+            .testimonials-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+        }
+
+        .testimonial-card {
+            background: var(--bg-panel);
+            border: 1px solid var(--border-dark);
+            border-left: 3px solid var(--red-neon);
+            padding: 32px;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .testimonial-card blockquote {
+            color: var(--text-gray);
+            font-size: 1rem;
+            line-height: 1.7;
+            font-style: italic;
+        }
+
+        .testimonial-card blockquote strong {
+            color: var(--text-white);
+            font-style: normal;
+        }
+
+        .testimonial-author {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+
+        .testimonial-author .name {
+            color: var(--text-white);
+            font-weight: 600;
+            font-size: 1rem;
+        }
+
+        .testimonial-author .title {
+            color: var(--red-neon);
+            font-size: 0.85rem;
+            font-family: 'Orbitron', monospace;
+            letter-spacing: 0.05em;
+        }
+
+        /* Footer */
+        footer {
+            padding: 40px 0;
+            border-top: 1px solid var(--border-dark);
+            text-align: center;
+            background: var(--bg-black);
+        }
+
+        footer p {
+            color: var(--text-muted);
+            font-size: 0.875rem;
+            font-family: 'Orbitron', monospace;
+            letter-spacing: 0.1em;
+        }
+
+        footer a {
+            color: var(--text-gray);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        footer a:hover {
+            color: var(--red-neon);
+        }
+
+        /* Animations */
+        @keyframes pulse-glow {
+            0%, 100% { box-shadow: 0 0 20px rgba(37, 99, 235, 0.3); }
+            50% { box-shadow: 0 0 40px rgba(37, 99, 235, 0.5); }
+        }
+
+        .pulse {
+            animation: pulse-glow 2s ease-in-out infinite;
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="container">
+            <a href="https://clientcortex.eu" class="logo">
+                <img src="../assets/CCLogoName.png" alt="Client Cortex" class="logo-img">
+            </a>
+            <a href="#contact" class="nav-cta">Email Me</a>
+        </div>
+    </nav>
+
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <span class="hero-badge">Clone Your Voice. Free Your Time.</span>
+                <h1>Client Cortex for Founders Helps:</h1>
+
+                <div class="hero-benefits">
+                    <div class="hero-benefit">
+                        <div class="icon">
+                            <svg fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z"/>
+                            </svg>
+                        </div>
+                        <div class="text">
+                            <strong>Your Copywriters</strong> nail your voice on ads, emails, and sales pages — without you rewriting everything
+                        </div>
+                    </div>
+
+                    <div class="hero-benefit">
+                        <div class="icon">
+                            <svg fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                            </svg>
+                        </div>
+                        <div class="text">
+                            <strong>You</strong> stop being the bottleneck so your business grows while you're enjoying vacation
+                        </div>
+                    </div>
+
+                    <div class="hero-benefit">
+                        <div class="icon">
+                            <svg fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"/>
+                            </svg>
+                        </div>
+                        <div class="text">
+                            <strong>Your VAs</strong> use AI without generic prompts, instead guided by your real customer data and brand voice
+                        </div>
+                    </div>
+                </div>
+
+                <a href="#contact" class="cta-button pulse">
+                    Email Me
+                    <svg width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
+                    </svg>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <section class="how-it-works" id="how">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-label">The System</span>
+                <h2>How Does It Work?</h2>
+                <p>Founder Cortex captures two things most personal brands never properly document.</p>
+            </div>
+
+            <div class="combination-visual">
+                <div class="data-panel">
+                    <h3>Input 01: Your Brand DNA</h3>
+                    <ul>
+                        <li>Your voice — pulled from your emails, videos, podcasts, and posts</li>
+                        <li>Hundreds of customer reviews & testimonials</li>
+                        <li>Deep audience research: their real words, pains, desires, and objections</li>
+                        <li>Your origin story, frameworks, and philosophy</li>
+                        <li>Competitor positioning</li>
+                        <li>What's worked before (and why)</li>
+                    </ul>
+                </div>
+
+                <div class="combo-connector">
+                    <div class="combo-plus">+</div>
+                </div>
+
+                <div class="data-panel">
+                    <h3>Input 02: Direct Response Frameworks</h3>
+                    <ul>
+                        <li>Proven copy templates for ads, emails, landing pages, and upsells</li>
+                        <li>High-performing ad and funnel breakdowns</li>
+                        <li>The 7 primary emotional drivers</li>
+                        <li>Market awareness stages</li>
+                        <li>$20,000+ worth of direct response copywriting methodology</li>
+                        <li>And more as each Cortex is tailored around your specific offer</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="output-section">
+                <div class="output-header">
+                    <h3>System Output</h3>
+                </div>
+
+                <div class="output-grid">
+                    <div class="output-card">
+                        <div class="card-icon">
+                            <svg fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 12h3.75M9 15h3.75M9 18h3.75m3 .75H18a2.25 2.25 0 002.25-2.25V6.108c0-1.135-.845-2.098-1.976-2.192a48.424 48.424 0 00-1.123-.08m-5.801 0c-.065.21-.1.433-.1.664 0 .414.336.75.75.75h4.5a.75.75 0 00.75-.75 2.25 2.25 0 00-.1-.664m-5.8 0A2.251 2.251 0 0113.5 2.25H15c1.012 0 1.867.668 2.15 1.586m-5.8 0c-.376.023-.75.05-1.124.08C9.095 4.01 8.25 4.973 8.25 6.108V8.25m0 0H4.875c-.621 0-1.125.504-1.125 1.125v11.25c0 .621.504 1.125 1.125 1.125h9.75c.621 0 1.125-.504 1.125-1.125V9.375c0-.621-.504-1.125-1.125-1.125H8.25zM6.75 12h.008v.008H6.75V12zm0 3h.008v.008H6.75V15zm0 3h.008v.008H6.75V18z"/>
+                            </svg>
+                        </div>
+                        <p><strong>Voice-matched briefs</strong> so any copywriter sounds like you from day one</p>
+                    </div>
+
+                    <div class="output-card">
+                        <div class="card-icon">
+                            <svg fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 18v-5.25m0 0a6.01 6.01 0 001.5-.189m-1.5.189a6.01 6.01 0 01-1.5-.189m3.75 7.478a12.06 12.06 0 01-4.5 0m3.75 2.383a14.406 14.406 0 01-3 0M14.25 18v-.192c0-.983.658-1.823 1.508-2.316a7.5 7.5 0 10-7.517 0c.85.493 1.509 1.333 1.509 2.316V18"/>
+                            </svg>
+                        </div>
+                        <p><strong>100+ ad and email angles per week</strong> pulled from your real customer data — not generic ChatGPT output</p>
+                    </div>
+
+                    <div class="output-card">
+                        <div class="card-icon">
+                            <svg fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"/>
+                            </svg>
+                        </div>
+                        <p><strong>Product & offer ideation</strong> based on gaps in what your audience is asking for but you're not selling yet</p>
+                    </div>
+
+                    <div class="output-card">
+                        <div class="card-icon">
+                            <svg fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17.25 6.75L22.5 12l-5.25 5.25m-10.5 0L1.5 12l5.25-5.25m7.5-3l-4.5 16.5"/>
+                            </svg>
+                        </div>
+                        <p><strong>AI prompts trained on your brand</strong> — your team uses Claude, ChatGPT, and Gemini with your voice, your data, your frameworks baked in</p>
+                    </div>
+
+                    <div class="output-card">
+                        <div class="card-icon">
+                            <svg fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19.5 14.25v-2.625a3.375 3.375 0 00-3.375-3.375h-1.5A1.125 1.125 0 0113.5 7.125v-1.5a3.375 3.375 0 00-3.375-3.375H8.25m0 12.75h7.5m-7.5 3H12M10.5 2.25H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 00-9-9z"/>
+                            </svg>
+                        </div>
+                        <p><strong>Sales page and upsell copy direction</strong> your team can execute without asking you 14 questions first</p>
+                    </div>
+
+                    <div class="output-card">
+                        <div class="card-icon">
+                            <svg fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 18.75a6 6 0 006-6v-1.5m-6 7.5a6 6 0 01-6-6v-1.5m6 7.5v3.75m-3.75 0h7.5M12 15.75a3 3 0 01-3-3V4.5a3 3 0 116 0v8.25a3 3 0 01-3 3z"/>
+                            </svg>
+                        </div>
+                        <p><strong>Customer-data podcasts & briefs</strong> that get your team into your audience's mindset in 10 minutes each morning</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="section-divider"></div>
+
+    <section class="testimonials-section" id="testimonials">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-label">Proof</span>
+                <h2>I Deliver Results</h2>
+            </div>
+
+            <div class="testimonials-grid">
+                <div class="testimonial-card">
+                    <blockquote>"I would HIGHLY recommend Maarten for building AI tools/workflows for your business. The guy downloaded my mind and <strong>created a golden agentic workflow</strong> to help my clients create sales pages."</blockquote>
+                    <div class="testimonial-author">
+                        <span class="name">Zac Hansen</span>
+                        <span class="title">7-Figure Productized Coach</span>
+                    </div>
+                </div>
+
+                <div class="testimonial-card">
+                    <blockquote>"Maarten is one of those rare people who just gets how to build sales funnels that work. We've done it together on multiple 7-figure projects. He's brilliant at writing copy that connects, coming up with marketing strategies that drive results, and fine-tuning funnels to maximise performance."</blockquote>
+                    <div class="testimonial-author">
+                        <span class="name">Darius Lukas</span>
+                        <span class="title">Hyper Entrepreneur</span>
+                    </div>
+                </div>
+
+                <div class="testimonial-card">
+                    <blockquote>"My client's ad creatives were slowly fatiguing and I needed new scripts ASAP. Maarten did the research, crafted multiple scripts, and came up with new big ideas that I had never considered. <strong>The ads made from Maarten's scripts have been part of our control group for over 6 months now.</strong>"</blockquote>
+                    <div class="testimonial-author">
+                        <span class="name">Joshua Gatewood</span>
+                        <span class="title">Mass Conversions Digital</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="section-divider"></div>
+
+    <section class="steps-section" id="steps">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-label">Installation Protocol</span>
+                <h2>How We Install Founder Cortex</h2>
+                <p>3 phases to get your team running without you hovering over every draft</p>
+            </div>
+
+            <div class="steps-timeline">
+                <div class="step">
+                    <div class="step-number">01</div>
+                    <div class="step-content">
+                        <h3>Phase 1: Download Your Brain</h3>
+                        <ul>
+                            <li>Together with you (or your assistant), we pull in everything that makes your brand <em>yours</em>. Think emails you've written, podcast episodes, course content, your best social posts</li>
+                            <li>We organize hundreds of customer reviews, testimonials, and DMs into one scannable system</li>
+                            <li>We capture the language your audience actually uses — not what you think they say, what they <em>really</em> say</li>
+                            <li>Repeat for each offer you sell</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="step">
+                    <div class="step-number">02</div>
+                    <div class="step-content">
+                        <h3>Phase 2: Activate The Brain</h3>
+                        <ul>
+                            <li>We upload dozens of proprietary copywriting, creative strategy, and direct response frameworks</li>
+                            <li>We connect those frameworks to your voice files and customer data — so the output sounds like you, not like a robot</li>
+                            <li>We set up custom ideation, research, and copy brief workflows that find angles your team would never come up with on their own</li>
+                            <li>We build out product ideation reports based on your customer data — surfacing offers, bundles, and solutions your audience wants but you're not selling yet</li>
+                            <li>100% secure within Google's TOS</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="step">
+                    <div class="step-number">03</div>
+                    <div class="step-content">
+                        <h3>Phase 3: Team Training</h3>
+                        <ul>
+                            <li>We train your team to run the system without you</li>
+                            <li>SOPs and video walkthroughs for your copywriters, content managers, and VAs</li>
+                            <li>How to generate 100+ ad and email angles per week using your real data</li>
+                            <li>How to use Claude and Gemini properly — with prompts pre-loaded with your voice, your audience insights, and your frameworks (so they stop producing generic AI slop)</li>
+                            <li>How to create copy briefs and product pitches that actually sound like you wrote them</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="section-divider"></div>
+
+    <section class="about-section" id="about">
+        <div class="container">
+            <div class="about-grid">
+                <div class="about-card">
+                    <div class="label">The Operator</div>
+                    <h3>Maarten Vaerewijck</h3>
+                    <img src="../assets/MeBWtp.png" alt="Maarten Vaerewijck" class="profile-pic">
+                </div>
+
+                <div class="about-text">
+                    <p>Here's why Founder Cortex works: it's built on <strong>7+ years of direct response copy</strong> I wrote for brands spending <strong>$1M+/month on ads</strong>.</p>
+
+                    <p>VSLs. Emails. Landers. Ad scripts. For 8 and 9-figure DTC brands like <strong>4Patriots</strong>, <strong>LifeVac</strong>, and <strong>ShopSolar</strong>.</p>
+
+                    <p>I was <strong>CMO for Darius Lukas</strong> — a 7-figure personal brand. We launched multiple 7-figure funnels in 9 months. One hit <strong>$66k profit in 10 days</strong>.</p>
+
+                    <p>As Chief Creative Strategist, my ads have hit <strong>10%+ CTR</strong> and <strong>3+ ROAS</strong>.</p>
+
+                    <p>People pay me to come up with big ideas that print money. That's what I do.</p>
+
+                    <p>Problem is: <strong>you can't hire me full-time.</strong></p>
+
+                    <p>And here's what I've seen over and over: <strong>founders like you are stuck</strong> reviewing every email, rewriting every ad, re-briefing every VA.</p>
+
+                    <p>Why? Because nobody on your team can capture your voice or think from your customer's perspective the way you do.</p>
+
+                    <p>It's not like it's a bad team... they just don't have access to what's inside your head.</p>
+
+                    <p><strong>Founder Cortex fixes that.</strong></p>
+
+                    <p>It captures your voice, your audience's psychology, and your direct response frameworks into a system your team can use 24/7.</p>
+
+                    <p>Your copywriter writes emails that sound like you.<br>
+                    Your VA creates ads informed by real customer pain points.<br>
+                    Your marketers generate ideas you actually love.</p>
+
+                    <p><strong>While you are off-grid, 99%* disconnected from your business</strong></p>
+
+                    <p><em>(* because founders can never totally let go, right?)</em></p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="cta-section" id="contact">
+        <div class="container">
+            <div class="cta-content">
+                <span class="section-label">Get Started</span>
+                <img src="../assets/LogoTP1.png" alt="Client Cortex" class="cta-logo">
+                <h2>Ready to Install Founder Cortex?</h2>
+                <p>You built your brand on your voice and your vision. Founder Cortex makes sure your team can execute both — without you micromanaging every word.</p>
+                <a href="mailto:Maarten@ClientCortex.EU" class="cta-button cta-icon-only pulse">
+                    <svg width="24" height="24" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+                    </svg>
+                </a>
+                <p class="email-text"><strong>Maarten@ClientCortex.EU</strong></p>
+                <p class="linkedin-text">Or connect on LinkedIn and send me a DM</p>
+                <a href="https://www.linkedin.com/in/creativestrategy" target="_blank" rel="noopener noreferrer" class="linkedin-link">
+                    <svg width="32" height="32" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+                    </svg>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 Founder Cortex by Client Cortex. All Rights Reserved. Made by <a href="https://vaerewijck.com" target="_blank" rel="noopener noreferrer">Maarten Vaerewijck</a></p>
+        </div>
+    </footer>
+</body>
+</html>
