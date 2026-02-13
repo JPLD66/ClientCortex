@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Founder Cortex | Clone Your Voice. Free Your Time.</title>
-    <meta name="description" content="Founder Cortex helps your copywriters nail your voice on ads, emails, and sales pages — without you rewriting everything.">
+    <title>Email Cortex | High-Converting Email Campaigns That Sound Like You</title>
+    <meta name="description" content="Create an infinite loop of high-converting email campaigns that actually sound like you. Without burning out your copywriter or writing a single draft yourself.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&family=Rajdhani:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
@@ -13,15 +13,14 @@
             --bg-black: #000000;
             --bg-dark: #0a0a0a;
             --bg-panel: #111111;
-            --red-neon: #2563eb;
-            --red-glow: #3b82f6;
-            --red-dark: #1d4ed8;
-            --red-darker: #1e3a8a;
+            --accent: #2563eb;
+            --accent-glow: #3b82f6;
+            --accent-dark: #1d4ed8;
             --text-white: #ffffff;
             --text-gray: #a3a3a3;
             --text-muted: #737373;
             --border-dark: #262626;
-            --border-red: rgba(37, 99, 235, 0.4);
+            --border-accent: rgba(37, 99, 235, 0.4);
         }
 
         * {
@@ -44,7 +43,6 @@
             max-width: 100vw;
         }
 
-        /* Scan line overlay */
         body::before {
             content: '';
             position: fixed;
@@ -65,12 +63,11 @@
         }
 
         .container {
-            max-width: 1200px;
+            max-width: 900px;
             margin: 0 auto;
             padding: 0 24px;
         }
 
-        /* Typography */
         h1, h2, h3, .section-label {
             font-family: 'Orbitron', monospace;
             text-transform: uppercase;
@@ -86,7 +83,7 @@
             z-index: 100;
             padding: 16px 0;
             background: rgba(0, 0, 0, 0.95);
-            border-bottom: 1px solid var(--red-neon);
+            border-bottom: 1px solid var(--accent);
             box-shadow: 0 0 20px rgba(37, 99, 235, 0.3);
         }
 
@@ -94,12 +91,13 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
+            max-width: 1200px;
         }
 
         .logo {
             display: flex;
             align-items: center;
-            gap: 12px;
+            text-decoration: none;
         }
 
         .logo img {
@@ -108,81 +106,28 @@
             object-fit: contain;
         }
 
-        .logo-text {
-            font-family: 'Orbitron', monospace;
-            font-size: 1.1rem;
-            font-weight: 700;
-            color: var(--text-white);
-            letter-spacing: 0.15em;
-            text-transform: uppercase;
-        }
-
         .nav-cta {
             padding: 12px 28px;
             background: transparent;
-            color: var(--red-neon);
+            color: var(--accent);
             text-decoration: none;
             font-family: 'Orbitron', monospace;
             font-weight: 600;
             font-size: 0.8rem;
             letter-spacing: 0.15em;
             text-transform: uppercase;
-            border: 2px solid var(--red-neon);
+            border: 2px solid var(--accent);
             transition: all 0.3s ease;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .nav-cta::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: var(--red-neon);
-            transition: left 0.3s ease;
-            z-index: -1;
         }
 
         .nav-cta:hover {
+            background: var(--accent);
             color: var(--bg-black);
-            box-shadow: 0 0 30px rgba(37, 99, 235, 0.5);
-        }
-
-        .nav-cta:hover::before {
-            left: 0;
         }
 
         @media (max-width: 600px) {
-            nav {
-                padding: 12px 0;
-            }
-
-            nav .container {
-                padding: 0 12px;
-                gap: 8px;
-            }
-
-            .logo img {
-                height: 36px;
-                width: auto;
-            }
-
-            .nav-cta {
-                padding: 6px 12px;
-                font-size: 0.65rem;
-                letter-spacing: 0.05em;
-                white-space: nowrap;
-            }
-
-            .cta-button {
-                padding: 14px 24px;
-                font-size: 0.7rem;
-                gap: 10px;
-                max-width: 100%;
-                word-break: break-all;
-            }
+            .logo img { height: 36px; }
+            .nav-cta { padding: 8px 16px; font-size: 0.7rem; }
         }
 
         /* Hero Section */
@@ -190,123 +135,55 @@
             min-height: 100vh;
             display: flex;
             align-items: center;
-            padding: 120px 0 80px;
-            position: relative;
-            background:
-                radial-gradient(ellipse at 50% 0%, rgba(37, 99, 235, 0.15) 0%, transparent 50%),
-                var(--bg-black);
-        }
-
-        .hero::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            height: 1px;
-            background: linear-gradient(90deg, transparent, var(--red-neon), transparent);
+            padding: 140px 0 80px;
+            background: radial-gradient(ellipse at 50% 0%, rgba(37, 99, 235, 0.15) 0%, transparent 50%), var(--bg-black);
         }
 
         .hero-content {
             text-align: center;
-            max-width: 1000px;
+            max-width: 800px;
             margin: 0 auto;
-        }
-
-        .hero-logo {
-            width: 180px;
-            height: auto;
-            margin-bottom: 40px;
-            filter: drop-shadow(0 0 30px rgba(37, 99, 235, 0.5));
         }
 
         .hero-badge {
             display: inline-block;
             padding: 8px 20px;
             background: rgba(37, 99, 235, 0.1);
-            border: 1px solid var(--border-red);
-            font-family: 'Orbitron', monospace;
-            font-size: 0.7rem;
-            color: var(--red-neon);
-            letter-spacing: 0.2em;
-            text-transform: uppercase;
+            border: 1px solid var(--border-accent);
+            font-family: 'Rajdhani', sans-serif;
+            font-size: 1rem;
+            color: var(--text-gray);
+            font-style: italic;
             margin-bottom: 32px;
         }
 
         .hero h1 {
-            font-size: clamp(2rem, 5vw, 3.5rem);
+            font-size: clamp(1.5rem, 4vw, 2.5rem);
             font-weight: 700;
+            margin-bottom: 24px;
+            line-height: 1.3;
+            color: var(--accent);
+        }
+
+        .hero-subheadline {
+            font-size: 1.25rem;
+            color: var(--text-gray);
             margin-bottom: 48px;
-            line-height: 1.2;
-        }
-
-        .hero-benefits {
-            display: flex;
-            flex-direction: column;
-            gap: 16px;
-            margin-bottom: 56px;
-            max-width: 800px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-
-        .hero-benefit {
-            display: flex;
-            align-items: center;
-            gap: 20px;
-            padding: 20px 28px;
-            background: var(--bg-panel);
-            border: 1px solid var(--border-dark);
-            border-left: 3px solid var(--red-neon);
-            text-align: left;
-            transition: all 0.3s ease;
-        }
-
-        .hero-benefit:hover {
-            border-color: var(--red-neon);
-            background: rgba(37, 99, 235, 0.05);
-            box-shadow: 0 0 30px rgba(37, 99, 235, 0.1);
-            transform: translateX(8px);
-        }
-
-        .hero-benefit .icon {
-            flex-shrink: 0;
-            width: 48px;
-            height: 48px;
-            background: rgba(37, 99, 235, 0.1);
-            border: 1px solid var(--border-red);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .hero-benefit .icon svg {
-            width: 24px;
-            height: 24px;
-            stroke: var(--red-neon);
-        }
-
-        .hero-benefit .text {
-            font-size: 1.1rem;
-            font-weight: 500;
-        }
-
-        .hero-benefit strong {
-            color: var(--red-neon);
+            line-height: 1.6;
         }
 
         .cta-button {
             display: inline-flex;
             align-items: center;
-            gap: 16px;
-            padding: 20px 48px;
-            background: var(--red-neon);
+            gap: 12px;
+            padding: 18px 36px;
+            background: var(--accent);
             color: var(--bg-black);
             text-decoration: none;
             font-family: 'Orbitron', monospace;
             font-weight: 700;
-            font-size: 0.9rem;
-            letter-spacing: 0.15em;
+            font-size: 0.85rem;
+            letter-spacing: 0.1em;
             text-transform: uppercase;
             transition: all 0.3s ease;
             box-shadow: 0 0 40px rgba(37, 99, 235, 0.4);
@@ -314,621 +191,243 @@
         }
 
         .cta-button:hover {
-            background: var(--red-glow);
+            background: var(--accent-glow);
             box-shadow: 0 0 60px rgba(37, 99, 235, 0.6);
             transform: scale(1.02);
         }
 
-        .cta-button svg {
-            transition: transform 0.3s ease;
-        }
-
-        .cta-button:hover svg {
-            transform: translateX(4px);
-        }
-
-        /* Section Styling */
+        /* Content Sections */
         section {
-            padding: 100px 0;
-            position: relative;
+            padding: 80px 0;
+        }
+
+        .section-divider {
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--accent), transparent);
         }
 
         .section-label {
             display: inline-block;
-            font-size: 0.7rem;
-            color: var(--red-neon);
-            letter-spacing: 0.3em;
-            margin-bottom: 16px;
-            padding: 6px 16px;
+            font-size: 0.75rem;
+            color: var(--accent);
+            letter-spacing: 0.25em;
+            margin-bottom: 24px;
+            padding: 8px 16px;
             background: rgba(37, 99, 235, 0.1);
-            border: 1px solid var(--border-red);
+            border: 1px solid var(--border-accent);
         }
 
         .section-header {
             text-align: center;
-            max-width: 800px;
-            margin: 0 auto 64px;
-        }
-
-        .section-header h2 {
-            font-size: clamp(1.75rem, 4vw, 2.5rem);
-            font-weight: 700;
-            margin-bottom: 20px;
-        }
-
-        .section-header p {
-            color: var(--text-gray);
-            font-size: 1.125rem;
-        }
-
-        /* Section Divider */
-        .section-divider {
-            height: 1px;
-            background: linear-gradient(90deg, transparent, var(--red-neon), transparent);
-            margin: 0;
-        }
-
-        /* Case Study Section */
-        .case-study-section {
-            background: var(--bg-dark);
-            padding: 80px 0;
-            text-align: center;
-        }
-
-        .case-study-section .case-label {
-            display: inline-block;
-            font-family: 'Orbitron', monospace;
-            font-size: 0.8rem;
-            color: var(--red-neon);
-            letter-spacing: 0.2em;
-            text-transform: uppercase;
-            margin-bottom: 24px;
-        }
-
-        .case-study-section p {
-            font-size: 1.25rem;
-            color: var(--text-gray);
-            max-width: 700px;
-            margin: 0 auto 32px;
-            line-height: 1.7;
-        }
-
-        .case-study-section em {
-            color: var(--text-white);
-            font-style: italic;
-        }
-
-        .case-study-section img {
-            max-width: 100%;
-            width: 600px;
-            height: auto;
-            border: 1px solid var(--border-dark);
-        }
-
-        /* How It Works - The Combination */
-        .how-it-works {
-            background: var(--bg-dark);
-        }
-
-        .combination-visual {
-            display: grid;
-            grid-template-columns: 1fr auto 1fr;
-            gap: 32px;
-            align-items: stretch;
-            margin-bottom: 80px;
-        }
-
-        @media (max-width: 900px) {
-            .combination-visual {
-                grid-template-columns: 1fr;
-                gap: 24px;
-            }
-        }
-
-        .data-panel {
-            background: var(--bg-panel);
-            border: 1px solid var(--border-dark);
-            padding: 32px;
-            position: relative;
-        }
-
-        .data-panel::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 4px;
-            height: 100%;
-            background: var(--red-neon);
-        }
-
-        .data-panel h3 {
-            font-size: 0.8rem;
-            color: var(--red-neon);
-            margin-bottom: 24px;
-            letter-spacing: 0.2em;
-            display: flex;
-            align-items: center;
-            gap: 12px;
-        }
-
-        .data-panel h3::before {
-            content: '';
-            width: 8px;
-            height: 8px;
-            background: var(--red-neon);
-            box-shadow: 0 0 10px var(--red-neon);
-        }
-
-        .data-panel ul {
-            list-style: none;
-        }
-
-        .data-panel li {
-            padding: 14px 0;
-            color: var(--text-gray);
-            display: flex;
-            align-items: center;
-            gap: 16px;
-            border-bottom: 1px solid var(--border-dark);
-            font-size: 1rem;
-            font-weight: 500;
-        }
-
-        .data-panel li:last-child {
-            border-bottom: none;
-        }
-
-        .data-panel li::before {
-            content: '›';
-            color: var(--red-neon);
-            font-size: 1.25rem;
-            font-weight: bold;
-        }
-
-        .combo-connector {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .combo-plus {
-            width: 72px;
-            height: 72px;
-            background: var(--red-neon);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-family: 'Orbitron', monospace;
-            font-size: 2.5rem;
-            font-weight: 300;
-            color: var(--bg-black);
-            box-shadow: 0 0 40px rgba(37, 99, 235, 0.5);
-        }
-
-        @media (max-width: 900px) {
-            .combo-plus {
-                width: 56px;
-                height: 56px;
-                font-size: 2rem;
-            }
-        }
-
-        /* Output Section */
-        .output-section {
-            margin-top: 80px;
-        }
-
-        .output-header {
-            text-align: center;
             margin-bottom: 48px;
         }
 
-        .output-header h3 {
-            font-size: 1.25rem;
+        .section-header h2 {
+            font-size: clamp(1.5rem, 3.5vw, 2rem);
+            margin-bottom: 16px;
+        }
+
+        /* Text Content */
+        .content-section {
+            background: var(--bg-dark);
+        }
+
+        .content-section p {
+            font-size: 1.125rem;
+            color: var(--text-gray);
+            margin-bottom: 24px;
+            line-height: 1.8;
+        }
+
+        .content-section strong {
             color: var(--text-white);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 20px;
         }
 
-        .output-header h3::before,
-        .output-header h3::after {
-            content: '';
-            width: 60px;
-            height: 1px;
-            background: var(--red-neon);
+        .content-section em {
+            color: var(--accent);
+            font-style: italic;
         }
 
-        .output-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 20px;
+        .lead-text {
+            font-size: 1.25rem !important;
+            text-align: center;
+            max-width: 700px;
+            margin: 0 auto 48px !important;
         }
 
-        @media (max-width: 900px) {
-            .output-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
+        /* Bullet Lists */
+        .feature-list {
+            list-style: none;
+            margin: 32px 0;
         }
 
-        @media (max-width: 600px) {
-            .output-grid {
-                grid-template-columns: 1fr;
-            }
+        .feature-list li {
+            padding: 12px 0;
+            padding-left: 28px;
+            color: var(--text-gray);
+            font-size: 1.1rem;
+            position: relative;
+            border-bottom: 1px solid var(--border-dark);
         }
 
-        .output-card {
+        .feature-list li:last-child {
+            border-bottom: none;
+        }
+
+        .feature-list li::before {
+            content: '✓';
+            color: var(--accent);
+            position: absolute;
+            left: 0;
+            font-weight: bold;
+        }
+
+        /* Result Blocks */
+        .result-block {
             background: var(--bg-panel);
             border: 1px solid var(--border-dark);
-            padding: 28px;
-            position: relative;
-            transition: all 0.3s ease;
-            overflow: hidden;
+            border-left: 4px solid var(--accent);
+            padding: 24px 28px;
+            margin: 24px 0;
         }
 
-        .output-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 3px;
-            background: var(--red-neon);
-            transform: scaleX(0);
-            transform-origin: left;
-            transition: transform 0.3s ease;
+        .result-block p {
+            margin-bottom: 0 !important;
+            color: var(--text-white) !important;
         }
 
-        .output-card:hover {
-            border-color: var(--red-neon);
-            background: rgba(37, 99, 235, 0.03);
-        }
-
-        .output-card:hover::before {
-            transform: scaleX(1);
-        }
-
-        .output-card .card-icon {
-            width: 44px;
-            height: 44px;
-            background: rgba(37, 99, 235, 0.1);
-            border: 1px solid var(--border-red);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-bottom: 20px;
-        }
-
-        .output-card .card-icon svg {
-            width: 22px;
-            height: 22px;
-            stroke: var(--red-neon);
-        }
-
-        .output-card p {
-            color: var(--text-gray);
-            font-size: 0.95rem;
-            line-height: 1.6;
-        }
-
-        .output-card strong {
-            color: var(--text-white);
-            font-weight: 600;
-        }
-
-        /* Installation Steps */
+        /* Steps Section */
         .steps-section {
             background: var(--bg-black);
         }
 
-        .steps-timeline {
-            position: relative;
-            max-width: 900px;
-            margin: 0 auto;
-        }
-
-        .steps-timeline::before {
-            content: '';
-            position: absolute;
-            left: 40px;
-            top: 0;
-            bottom: 0;
-            width: 2px;
-            background: linear-gradient(180deg, var(--red-neon), var(--red-dark));
-        }
-
-        @media (max-width: 600px) {
-            .steps-timeline::before {
-                left: 24px;
-            }
-        }
-
         .step {
             display: flex;
-            gap: 40px;
+            gap: 32px;
             margin-bottom: 48px;
-            position: relative;
-        }
-
-        .step:last-child {
-            margin-bottom: 0;
+            align-items: flex-start;
         }
 
         .step-number {
             flex-shrink: 0;
-            width: 80px;
-            height: 80px;
-            background: var(--bg-black);
-            border: 2px solid var(--red-neon);
+            width: 60px;
+            height: 60px;
+            background: var(--accent);
+            color: var(--bg-black);
             display: flex;
             align-items: center;
             justify-content: center;
             font-family: 'Orbitron', monospace;
-            font-size: 1.75rem;
+            font-size: 1.5rem;
             font-weight: 700;
-            color: var(--red-neon);
-            position: relative;
-            z-index: 1;
-            box-shadow: 0 0 30px rgba(37, 99, 235, 0.3);
-        }
-
-        @media (max-width: 600px) {
-            .step-number {
-                width: 48px;
-                height: 48px;
-                font-size: 1.25rem;
-            }
-            .step {
-                gap: 24px;
-            }
-        }
-
-        .step-content {
-            flex: 1;
-            background: var(--bg-panel);
-            border: 1px solid var(--border-dark);
-            padding: 32px;
-            border-left: 3px solid var(--red-neon);
         }
 
         .step-content h3 {
             font-size: 1.1rem;
-            margin-bottom: 20px;
-            color: var(--text-white);
+            margin-bottom: 16px;
+            color: var(--accent);
         }
 
-        .step-content ul {
-            list-style: none;
-            width: 100%;
-        }
-
-        .step-content li {
-            padding: 10px 0;
-            padding-left: 24px;
+        .step-content p {
             color: var(--text-gray);
-            font-size: 1rem;
-            position: relative;
+            font-size: 1.05rem;
+            line-height: 1.7;
         }
 
-        .step-content li::before {
-            content: '→';
-            color: var(--red-neon);
-            font-weight: bold;
-            position: absolute;
-            left: 0;
+        @media (max-width: 600px) {
+            .step { flex-direction: column; gap: 16px; }
+            .step-number { width: 48px; height: 48px; font-size: 1.25rem; }
         }
 
-        /* About Section */
-        .about-section {
-            background: var(--bg-dark);
-        }
-
-        .about-grid {
-            display: grid;
-            grid-template-columns: 300px 1fr;
-            gap: 64px;
-            align-items: start;
-        }
-
-        @media (max-width: 800px) {
-            .about-grid {
-                grid-template-columns: 1fr;
-                gap: 40px;
-            }
-        }
-
-        .about-card {
+        /* Features/Parts Section */
+        .part-block {
             background: var(--bg-panel);
             border: 1px solid var(--border-dark);
             padding: 32px;
-            text-align: center;
-            position: sticky;
-            top: 120px;
+            margin-bottom: 32px;
         }
 
-        .about-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 3px;
-            background: var(--red-neon);
+        .part-block h3 {
+            font-size: 1rem;
+            color: var(--accent);
+            margin-bottom: 20px;
+            padding-bottom: 16px;
+            border-bottom: 1px solid var(--border-dark);
         }
 
-        .about-card .label {
-            font-family: 'Orbitron', monospace;
-            font-size: 0.65rem;
-            color: var(--red-neon);
-            letter-spacing: 0.25em;
-            text-transform: uppercase;
-            margin-bottom: 16px;
-        }
-
-        .about-card h3 {
-            font-size: 1.25rem;
+        .part-block p {
+            color: var(--text-gray);
+            font-size: 1rem;
+            line-height: 1.7;
             margin-bottom: 20px;
         }
 
-        .about-card .profile-pic {
-            width: 120px;
-            height: 120px;
-            object-fit: cover;
-            border: 2px solid var(--red-neon);
-            box-shadow: 0 0 20px rgba(37, 99, 235, 0.3);
+        .part-block ul {
+            list-style: none;
         }
 
-        .about-text {
-            display: flex;
-            flex-direction: column;
-            gap: 24px;
-        }
-
-        .about-text p {
+        .part-block li {
+            padding: 10px 0;
+            padding-left: 24px;
             color: var(--text-gray);
-            font-size: 1.0625rem;
-            line-height: 1.8;
-        }
-
-        .about-text strong {
-            color: var(--text-white);
-        }
-
-        .highlight-block {
-            padding: 28px;
-            background: rgba(37, 99, 235, 0.08);
-            border: 1px solid var(--border-red);
-            border-left: 4px solid var(--red-neon);
-            margin: 24px 0;
-        }
-
-        .highlight-block p {
-            color: var(--text-white) !important;
-            font-weight: 500;
-        }
-
-        /* CTA Section */
-        .cta-section {
-            background: var(--bg-black);
-            text-align: center;
-            padding: 120px 0;
             position: relative;
         }
 
-        .cta-section::before {
-            content: '';
+        .part-block li::before {
+            content: '→';
+            color: var(--accent);
             position: absolute;
-            top: 0;
             left: 0;
-            right: 0;
-            height: 1px;
-            background: linear-gradient(90deg, transparent, var(--red-neon), transparent);
         }
 
-        .cta-section::after {
-            content: '';
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            width: 600px;
-            height: 400px;
-            background: radial-gradient(circle, rgba(37, 99, 235, 0.1) 0%, transparent 70%);
-            pointer-events: none;
+        .extra-block {
+            background: rgba(37, 99, 235, 0.05);
+            border: 1px solid var(--border-accent);
         }
 
-        .cta-content {
-            position: relative;
-            z-index: 1;
-            max-width: 600px;
-            margin: 0 auto;
+        /* Case Study */
+        .case-study-section {
+            background: var(--bg-dark);
+            padding: 60px 0;
+            text-align: center;
         }
 
-        .cta-logo {
-            width: 180px;
-            height: 180px;
-            object-fit: contain;
-            margin: 24px auto 32px;
-            display: block;
-            filter: drop-shadow(0 0 30px rgba(37, 99, 235, 0.5));
-        }
-
-        .cta-content h2 {
-            font-size: clamp(1.75rem, 4vw, 2.25rem);
+        .case-study-section .case-label {
+            font-family: 'Orbitron', monospace;
+            font-size: 0.8rem;
+            color: var(--accent);
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
             margin-bottom: 24px;
+            display: block;
         }
 
-        .cta-content p {
+        .case-study-section p {
+            font-size: 1.2rem;
             color: var(--text-gray);
-            margin-bottom: 40px;
-            font-size: 1.125rem;
+            max-width: 650px;
+            margin: 0 auto 32px;
+            line-height: 1.7;
         }
 
-        .cta-icon-only {
-            padding: 20px 28px;
-            gap: 0;
+        .case-study-section img {
+            max-width: 100%;
+            width: 550px;
+            height: auto;
+            border: 1px solid var(--border-dark);
         }
 
-        .email-text {
-            margin-top: 20px;
-            margin-bottom: 0 !important;
-            color: var(--text-white);
-            font-size: 1.1rem;
-        }
-
-        .linkedin-text {
-            margin-top: 32px;
-            margin-bottom: 16px !important;
-            color: var(--text-gray);
-            font-size: 1rem;
-        }
-
-        .linkedin-link {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--red-neon);
-            transition: all 0.3s ease;
-        }
-
-        .linkedin-link:hover {
-            color: var(--red-glow);
-            transform: scale(1.1);
-        }
-
-        .linkedin-link svg {
-            filter: drop-shadow(0 0 8px rgba(37, 99, 235, 0.5));
-        }
-
-        /* Testimonials Section */
+        /* Testimonials */
         .testimonials-section {
             background: var(--bg-black);
-            padding: 100px 0;
-        }
-
-        .testimonials-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 24px;
-        }
-
-        @media (max-width: 900px) {
-            .testimonials-grid {
-                grid-template-columns: 1fr;
-                gap: 20px;
-            }
         }
 
         .testimonial-card {
             background: var(--bg-panel);
             border: 1px solid var(--border-dark);
-            border-left: 3px solid var(--red-neon);
-            padding: 32px;
-            display: flex;
-            flex-direction: column;
-            gap: 20px;
+            border-left: 3px solid var(--accent);
+            padding: 28px;
+            margin-bottom: 24px;
         }
 
         .testimonial-card blockquote {
@@ -936,6 +435,7 @@
             font-size: 1rem;
             line-height: 1.7;
             font-style: italic;
+            margin-bottom: 16px;
         }
 
         .testimonial-card blockquote strong {
@@ -943,23 +443,117 @@
             font-style: normal;
         }
 
-        .testimonial-author {
-            display: flex;
-            flex-direction: column;
-            gap: 4px;
-        }
-
         .testimonial-author .name {
             color: var(--text-white);
             font-weight: 600;
-            font-size: 1rem;
         }
 
         .testimonial-author .title {
-            color: var(--red-neon);
+            color: var(--accent);
             font-size: 0.85rem;
             font-family: 'Orbitron', monospace;
-            letter-spacing: 0.05em;
+        }
+
+        /* Guarantee Section */
+        .guarantee-section {
+            background: var(--bg-dark);
+            text-align: center;
+        }
+
+        .guarantee-box {
+            background: rgba(37, 99, 235, 0.08);
+            border: 2px solid var(--accent);
+            padding: 40px;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .guarantee-box h2 {
+            font-size: 1.25rem;
+            margin-bottom: 24px;
+        }
+
+        .guarantee-box p {
+            color: var(--text-gray);
+            font-size: 1.05rem;
+            line-height: 1.7;
+            margin-bottom: 16px;
+        }
+
+        /* FAQ Section */
+        .faq-section {
+            background: var(--bg-black);
+        }
+
+        .faq-item {
+            border-bottom: 1px solid var(--border-dark);
+            padding: 24px 0;
+        }
+
+        .faq-item:last-child {
+            border-bottom: none;
+        }
+
+        .faq-item h3 {
+            font-size: 0.95rem;
+            color: var(--text-white);
+            margin-bottom: 12px;
+            text-transform: none;
+            letter-spacing: 0.02em;
+        }
+
+        .faq-item p {
+            color: var(--text-gray);
+            font-size: 1rem;
+            line-height: 1.7;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            background: var(--bg-dark);
+            text-align: center;
+            padding: 100px 0;
+        }
+
+        .cta-section h2 {
+            font-size: clamp(1.25rem, 3vw, 1.75rem);
+            margin-bottom: 24px;
+        }
+
+        .cta-section p {
+            color: var(--text-gray);
+            font-size: 1.1rem;
+            margin-bottom: 32px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            line-height: 1.7;
+        }
+
+        .signature {
+            margin-top: 48px;
+            color: var(--text-gray);
+            font-size: 1.1rem;
+        }
+
+        .signature strong {
+            color: var(--text-white);
+        }
+
+        /* About Section */
+        .about-section {
+            background: var(--bg-dark);
+        }
+
+        .about-section p {
+            font-size: 1.1rem;
+            color: var(--text-gray);
+            margin-bottom: 20px;
+            line-height: 1.8;
+        }
+
+        .about-section strong {
+            color: var(--text-white);
         }
 
         /* Footer */
@@ -984,7 +578,7 @@
         }
 
         footer a:hover {
-            color: var(--red-neon);
+            color: var(--accent);
         }
 
         /* Animations */
@@ -1002,172 +596,112 @@
     <nav>
         <div class="container">
             <a href="https://clientcortex.eu" class="logo">
-                <img src="../assets/CCLogoName.png" alt="Client Cortex" class="logo-img">
+                <img src="../assets/CCLogoName.png" alt="Client Cortex">
             </a>
-            <a href="#contact" class="nav-cta">Email Me</a>
+            <a href="#demo" class="nav-cta">Book Demo</a>
         </div>
     </nav>
 
+    <!-- Hero -->
     <section class="hero">
         <div class="container">
             <div class="hero-content">
-                <span class="hero-badge">Clone Your Voice. Free Your Time.</span>
-                <h1>Client Cortex for Founders Helps:</h1>
-
-                <div class="hero-benefits">
-                    <div class="hero-benefit">
-                        <div class="icon">
-                            <svg fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z"/>
-                            </svg>
-                        </div>
-                        <div class="text">
-                            <strong>Your Copywriters</strong> nail your voice on ads, emails, and sales pages — without you rewriting everything
-                        </div>
-                    </div>
-
-                    <div class="hero-benefit">
-                        <div class="icon">
-                            <svg fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/>
-                            </svg>
-                        </div>
-                        <div class="text">
-                            <strong>You</strong> stop being the bottleneck so your business grows while you're enjoying vacation
-                        </div>
-                    </div>
-
-                    <div class="hero-benefit">
-                        <div class="icon">
-                            <svg fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"/>
-                            </svg>
-                        </div>
-                        <div class="text">
-                            <strong>Your VAs</strong> use AI without generic prompts, instead guided by your real customer data and brand voice
-                        </div>
-                    </div>
-                </div>
-
-                <a href="#contact" class="cta-button pulse">
-                    Email Me
-                    <svg width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
-                    </svg>
-                </a>
+                <p class="hero-badge">For founders or email marketing managers who want to take it easy…</p>
+                <h1>By Creating an Infinite Loop of High-Converting Email Campaigns That Actually Sound Like You</h1>
+                <p class="hero-subheadline">Without burning out your copywriter, babysitting your VA, or writing a single email draft yourself.</p>
+                <a href="#demo" class="cta-button pulse">Book Your 9-Minute Demo →</a>
             </div>
         </div>
     </section>
 
     <div class="section-divider"></div>
 
+    <!-- Lead + What's Happening -->
+    <section class="content-section">
+        <div class="container">
+            <p class="lead-text">I've found that the #1 problem brands face with email marketing isn't the writing. It's the <em>thinking</em>.</p>
+
+            <p>Your team runs out of angles. They recycle the same hooks. The emails start sounding like everyone else in the niche. Or worse, they sound like ChatGPT.</p>
+
+            <div class="section-header" style="margin-top: 64px;">
+                <span class="section-label">Here's What's Happening</span>
+            </div>
+
+            <p>Imagine a dedicated email brain loaded with:</p>
+
+            <ul class="feature-list">
+                <li>Your voice</li>
+                <li>Product & Offer data</li>
+                <li>Real customer language examples</li>
+                <li>1000s of customer reviews</li>
+                <li>Deep research into your audience pain points & desires</li>
+                <li>Real direct response frameworks that have generated millions in email revenue</li>
+            </ul>
+
+            <p>And <strong>NOTHING else</strong>. (thus dodging the common AI problem of "knowing too much" leading to hallucinations)</p>
+
+            <p>By doing this, you'll rapidly bypass the "what do we even send this week?" panic and the generic AI slop that's slowly killing your retention rates.</p>
+
+            <div class="result-block">
+                <p><strong>The result?</strong></p>
+            </div>
+
+            <p>Your copywriter stops guessing and starts pulling from a library of angles they'll never exhaust.</p>
+
+            <p>Your VA writes emails that sound like they came from the founder. Not from a template.</p>
+
+            <p><em>"I have nothing to write about"</em> turns to <em>"I have 200 angles, which 5 should we send this week?"</em></p>
+
+            <p>Bland, forgettable emails turn to messages your audience actually replies to.</p>
+
+            <p>And you? You stop being the person who has to review every draft, rewrite every hook, and approve every send.</p>
+
+            <p style="text-align: center; margin-top: 48px; color: var(--text-white);"><strong>Let me show you exactly how it works...</strong></p>
+        </div>
+    </section>
+
+    <div class="section-divider"></div>
+
+    <!-- Case Study -->
     <section class="case-study-section">
         <div class="container">
             <span class="case-label">Quick Case Study</span>
             <p>A 7-figure coach didn't want to come back from his 14-day holiday... because Email Cortex helped us make <strong>$66k</strong> without him <em>after only 9 days</em></p>
-            <img src="../assets/CC client happy.png" alt="Client Cortex case study">
+            <img src="../assets/CC client happy.png" alt="Email Cortex case study results">
         </div>
     </section>
 
     <div class="section-divider"></div>
 
-    <section class="how-it-works" id="how">
+    <!-- How It Works - 3 Steps -->
+    <section class="steps-section">
         <div class="container">
             <div class="section-header">
-                <span class="section-label">The System</span>
-                <h2>How Does It Work?</h2>
-                <p>Founder Cortex captures two things most personal brands never properly document.</p>
+                <span class="section-label">Here's How It Works</span>
+                <h2>Never Run Out of High-Converting Email Ideas Again</h2>
             </div>
 
-            <div class="combination-visual">
-                <div class="data-panel">
-                    <h3>Input 01: Your Brand DNA</h3>
-                    <ul>
-                        <li>Your voice — pulled from your emails, videos, podcasts, and posts</li>
-                        <li>Hundreds of customer reviews & testimonials</li>
-                        <li>Deep audience research: their real words, pains, desires, and objections</li>
-                        <li>Your origin story, frameworks, and philosophy</li>
-                        <li>Competitor positioning</li>
-                        <li>What's worked before (and why)</li>
-                    </ul>
-                </div>
-
-                <div class="combo-connector">
-                    <div class="combo-plus">+</div>
-                </div>
-
-                <div class="data-panel">
-                    <h3>Input 02: Direct Response Frameworks</h3>
-                    <ul>
-                        <li>Proven copy templates for ads, emails, landing pages, and upsells</li>
-                        <li>High-performing ad and funnel breakdowns</li>
-                        <li>The 7 primary emotional drivers</li>
-                        <li>Market awareness stages</li>
-                        <li>$20,000+ worth of direct response copywriting methodology</li>
-                        <li>And more as each Cortex is tailored around your specific offer</li>
-                    </ul>
+            <div class="step">
+                <div class="step-number">1</div>
+                <div class="step-content">
+                    <h3>We Upload Your Voice + Customer Data</h3>
+                    <p>Hand over the raw ingredients that make your brand yours. Emails the founder has written. Podcast clips. Course content. Hundreds of customer reviews. DMs. Testimonials. Support tickets. We organize it all into one scannable, searchable system your team can reference instantly.</p>
                 </div>
             </div>
 
-            <div class="output-section">
-                <div class="output-header">
-                    <h3>System Output</h3>
+            <div class="step">
+                <div class="step-number">2</div>
+                <div class="step-content">
+                    <h3>We Install The Email Brain</h3>
+                    <p>We load proven direct response email frameworks on top of your data. Subject line formulas. Emotional trigger systems. Story-driven sequences. Spam word avoidance. CTA best practices. All from marketers who've driven millions in email sales. Then we connect those frameworks to YOUR customer language and YOUR founder's voice. So the output isn't generic. It's yours.</p>
                 </div>
+            </div>
 
-                <div class="output-grid">
-                    <div class="output-card">
-                        <div class="card-icon">
-                            <svg fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 12h3.75M9 15h3.75M9 18h3.75m3 .75H18a2.25 2.25 0 002.25-2.25V6.108c0-1.135-.845-2.098-1.976-2.192a48.424 48.424 0 00-1.123-.08m-5.801 0c-.065.21-.1.433-.1.664 0 .414.336.75.75.75h4.5a.75.75 0 00.75-.75 2.25 2.25 0 00-.1-.664m-5.8 0A2.251 2.251 0 0113.5 2.25H15c1.012 0 1.867.668 2.15 1.586m-5.8 0c-.376.023-.75.05-1.124.08C9.095 4.01 8.25 4.973 8.25 6.108V8.25m0 0H4.875c-.621 0-1.125.504-1.125 1.125v11.25c0 .621.504 1.125 1.125 1.125h9.75c.621 0 1.125-.504 1.125-1.125V9.375c0-.621-.504-1.125-1.125-1.125H8.25zM6.75 12h.008v.008H6.75V12zm0 3h.008v.008H6.75V15zm0 3h.008v.008H6.75V18z"/>
-                            </svg>
-                        </div>
-                        <p><strong>Voice-matched briefs</strong> so any copywriter sounds like you from day one</p>
-                    </div>
-
-                    <div class="output-card">
-                        <div class="card-icon">
-                            <svg fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 18v-5.25m0 0a6.01 6.01 0 001.5-.189m-1.5.189a6.01 6.01 0 01-1.5-.189m3.75 7.478a12.06 12.06 0 01-4.5 0m3.75 2.383a14.406 14.406 0 01-3 0M14.25 18v-.192c0-.983.658-1.823 1.508-2.316a7.5 7.5 0 10-7.517 0c.85.493 1.509 1.333 1.509 2.316V18"/>
-                            </svg>
-                        </div>
-                        <p><strong>100+ ad and email angles per week</strong> pulled from your real customer data — not generic ChatGPT output</p>
-                    </div>
-
-                    <div class="output-card">
-                        <div class="card-icon">
-                            <svg fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"/>
-                            </svg>
-                        </div>
-                        <p><strong>Product & offer ideation</strong> based on gaps in what your audience is asking for but you're not selling yet</p>
-                    </div>
-
-                    <div class="output-card">
-                        <div class="card-icon">
-                            <svg fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17.25 6.75L22.5 12l-5.25 5.25m-10.5 0L1.5 12l5.25-5.25m7.5-3l-4.5 16.5"/>
-                            </svg>
-                        </div>
-                        <p><strong>AI prompts trained on your brand</strong> — your team uses Claude, ChatGPT, and Gemini with your voice, your data, your frameworks baked in</p>
-                    </div>
-
-                    <div class="output-card">
-                        <div class="card-icon">
-                            <svg fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19.5 14.25v-2.625a3.375 3.375 0 00-3.375-3.375h-1.5A1.125 1.125 0 0113.5 7.125v-1.5a3.375 3.375 0 00-3.375-3.375H8.25m0 12.75h7.5m-7.5 3H12M10.5 2.25H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 00-9-9z"/>
-                            </svg>
-                        </div>
-                        <p><strong>Sales page and upsell copy direction</strong> your team can execute without asking you 14 questions first</p>
-                    </div>
-
-                    <div class="output-card">
-                        <div class="card-icon">
-                            <svg fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 18.75a6 6 0 006-6v-1.5m-6 7.5a6 6 0 01-6-6v-1.5m6 7.5v3.75m-3.75 0h7.5M12 15.75a3 3 0 01-3-3V4.5a3 3 0 116 0v8.25a3 3 0 01-3 3z"/>
-                            </svg>
-                        </div>
-                        <p><strong>Customer-data podcasts & briefs</strong> that get your team into your audience's mindset in 10 minutes each morning</p>
-                    </div>
+            <div class="step">
+                <div class="step-number">3</div>
+                <div class="step-content">
+                    <h3>We Train Your Team to Write Emails Without You</h3>
+                    <p>Your copywriter, VA, or even ChatGPT pulls angles, hooks, and full email briefs from the system every week. They get value-rich content ideas your audience goes crazy for AND persuasive direct response emails optimized for conversion. You review if you want to. But you don't have to. The brain does the thinking. Your team does the typing.</p>
                 </div>
             </div>
         </div>
@@ -1175,91 +709,185 @@
 
     <div class="section-divider"></div>
 
-    <section class="testimonials-section" id="testimonials">
+    <!-- Why It Works -->
+    <section class="content-section">
         <div class="container">
             <div class="section-header">
-                <span class="section-label">Proof</span>
-                <h2>I Deliver Results</h2>
+                <span class="section-label">Here's Why It Works</span>
             </div>
 
-            <div class="testimonials-grid">
-                <div class="testimonial-card">
-                    <blockquote>"I would HIGHLY recommend Maarten for building AI tools/workflows for your business. The guy downloaded my mind and <strong>created a golden agentic workflow</strong> to help my clients create sales pages."</blockquote>
-                    <div class="testimonial-author">
-                        <span class="name">Zac Hansen</span>
-                        <span class="title">7-Figure Productized Coach</span>
-                    </div>
-                </div>
+            <p>Most email teams rely on one of three things: the founder's brain, a copywriter's creativity, or ChatGPT.</p>
 
-                <div class="testimonial-card">
-                    <blockquote>"Maarten is one of those rare people who just gets how to build sales funnels that work. We've done it together on multiple 7-figure projects. He's brilliant at writing copy that connects, coming up with marketing strategies that drive results, and fine-tuning funnels to maximise performance."</blockquote>
-                    <div class="testimonial-author">
-                        <span class="name">Darius Lukas</span>
-                        <span class="title">Hyper Entrepreneur</span>
-                    </div>
-                </div>
+            <p><strong>The founder's brain doesn't scale.</strong> You can't be in every draft forever.</p>
 
-                <div class="testimonial-card">
-                    <blockquote>"My client's ad creatives were slowly fatiguing and I needed new scripts ASAP. Maarten did the research, crafted multiple scripts, and came up with new big ideas that I had never considered. <strong>The ads made from Maarten's scripts have been part of our control group for over 6 months now.</strong>"</blockquote>
-                    <div class="testimonial-author">
-                        <span class="name">Joshua Gatewood</span>
-                        <span class="title">Mass Conversions Digital</span>
-                    </div>
-                </div>
-            </div>
+            <p><strong>The copywriter runs dry after 2-3 months.</strong> They recycle angles. The emails start blending together. To compensate they write more aggressively. Your audience tunes out.</p>
+
+            <p><strong>ChatGPT…</strong> well it sounds like ChatGPT. Your subscribers can smell it in 2026. And it has either zero or bad knowledge of your actual customers, your voice, or what's worked before.</p>
+
+            <p>Instead of this cycle, Email Cortex goes directly to the source. Your real customer data. Their exact words, pains, desires, and objections. Mixed with your founder's actual voice. Then layered with battle-tested direct response frameworks 97% of marketers don't even know exist.</p>
+
+            <p>Because we're working with a hallucination-proof architecture (powered by Google's AI, secured inside Google Workspace), the system doesn't make things up. It doesn't invent customer quotes. It doesn't guess at your brand voice.</p>
+
+            <p><em>If it doesn't know, it says so.</em></p>
+
+            <p><em>If the data isn't there, it tells you.</em></p>
+
+            <p>This means your team can trust the output. And you can stop being the quality control bottleneck on every email that goes out.</p>
         </div>
     </section>
 
     <div class="section-divider"></div>
 
-    <section class="steps-section" id="steps">
+    <!-- Who Am I -->
+    <section class="about-section">
         <div class="container">
             <div class="section-header">
-                <span class="section-label">Installation Protocol</span>
-                <h2>How We Install Founder Cortex</h2>
-                <p>3 phases to get your team running without you hovering over every draft</p>
+                <span class="section-label">Who Am I To Build Your Email Brain?</span>
             </div>
 
-            <div class="steps-timeline">
-                <div class="step">
-                    <div class="step-number">01</div>
-                    <div class="step-content">
-                        <h3>Phase 1: Download Your Brain</h3>
-                        <ul>
-                            <li>Together with you (or your assistant), we pull in everything that makes your brand <em>yours</em>. Think emails you've written, podcast episodes, course content, your best social posts</li>
-                            <li>We organize hundreds of customer reviews, testimonials, and DMs into one scannable system</li>
-                            <li>We capture the language your audience actually uses — not what you think they say, what they <em>really</em> say</li>
-                            <li>Repeat for each offer you sell</li>
-                        </ul>
-                    </div>
-                </div>
+            <p>Hi, I'm Maarten and for the past <strong>7+ years</strong>, I've written direct response copy for brands spending <strong>$1M+/month on ads</strong>.</p>
 
-                <div class="step">
-                    <div class="step-number">02</div>
-                    <div class="step-content">
-                        <h3>Phase 2: Activate The Brain</h3>
-                        <ul>
-                            <li>We upload dozens of proprietary copywriting, creative strategy, and direct response frameworks</li>
-                            <li>We connect those frameworks to your voice files and customer data — so the output sounds like you, not like a robot</li>
-                            <li>We set up custom ideation, research, and copy brief workflows that find angles your team would never come up with on their own</li>
-                            <li>We build out product ideation reports based on your customer data — surfacing offers, bundles, and solutions your audience wants but you're not selling yet</li>
-                            <li>100% secure within Google's TOS</li>
-                        </ul>
-                    </div>
-                </div>
+            <p>VSLs. Emails. Landing pages. Ad scripts. For 8 and 9-figure DTC brands like <strong>4Patriots</strong>, <strong>LifeVac</strong>, and <strong>ShopSolar</strong>.</p>
 
-                <div class="step">
-                    <div class="step-number">03</div>
-                    <div class="step-content">
-                        <h3>Phase 3: Team Training</h3>
-                        <ul>
-                            <li>We train your team to run the system without you</li>
-                            <li>SOPs and video walkthroughs for your copywriters, content managers, and VAs</li>
-                            <li>How to generate 100+ ad and email angles per week using your real data</li>
-                            <li>How to use Claude and Gemini properly — with prompts pre-loaded with your voice, your audience insights, and your frameworks (so they stop producing generic AI slop)</li>
-                            <li>How to create copy briefs and product pitches that actually sound like you wrote them</li>
-                        </ul>
-                    </div>
+            <p>But it wasn't always smooth...</p>
+
+            <p>My ADD made it nearly impossible to stay organized. Frameworks I knew worked but couldn't find when I needed them. Customer insights buried in 40-page docs. The chaos of managing multiple clients while trying to keep the quality high.</p>
+
+            <p>Then I discovered Google's NotebookLM.</p>
+
+            <p>It was the first AI system that made my brain work <em>better</em> instead of worse. I could upload sources I trusted. Which meant I could trust the output. No hallucinations. No made-up answers. Just accurate information pulled from what I gave it.</p>
+
+            <p>As CMO for a 7-figure online education brand, I put this to the test. I installed the founder's voice and customer data into the system. Mixed it with my direct response frameworks.</p>
+
+            <p><strong>Three things happened:</strong></p>
+
+            <p>1. Our emails performed better because copy was rooted in real customer insights and the founder's actual voice.</p>
+
+            <p>2. Our Indonesian VA tried her hand at writing emails. Before we knew it, she outperformed our lead copywriter (who hated AI).</p>
+
+            <p>3. The founder took a 14-day holiday and sent a Slack message: <em>"You guys are doing much better without me :) I'm not coming back"</em></p>
+
+            <p>That's when I knew this system needed to exist for other brands.</p>
+
+            <p>To show you exactly how I've done this, I created <strong>Email Cortex</strong>.</p>
+
+            <p>Because your team doesn't have time to dig through 500 reviews to find a good email hook. Your copywriter shouldn't need a 45-minute briefing call every week. And you definitely shouldn't be the one rewriting every draft at 11:15pm.</p>
+
+            <p>Which is why I simplified everything into a done-for-you installation so your team gets a never-ending source of email ideas, angles, and briefs. All in your voice. All based on real data. All built on frameworks that have driven millions in revenue.</p>
+        </div>
+    </section>
+
+    <div class="section-divider"></div>
+
+    <!-- What You're Getting -->
+    <section class="content-section">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-label">Let Me Break Down Exactly What You're Getting</span>
+            </div>
+
+            <div class="part-block">
+                <h3>Part #1: Voice + Customer Data Installation</h3>
+                <p>Most brands have customer insights scattered across reviews, DMs, support tickets, testimonials, and the founder's head. This means your copywriter is guessing. Every. Single. Email.</p>
+                <p>We pull it all together. Your founder's voice from emails, podcasts, videos, and posts they've written. Hundreds of customer reviews organized by pain point, desire, and emotional trigger. Competitor positioning. What's worked before. What hasn't. All uploaded into one dedicated email brain your team can query anytime.</p>
+                <p><strong>You'll get:</strong></p>
+                <ul>
+                    <li>Your founder's voice captured and documented so any writer can match it from day one</li>
+                    <li>Customer language organized by emotion, pain point, and desire. Not just dumped into a folder</li>
+                    <li>A system that tells your copywriter exactly what words your audience uses. Not what you think they use. What they actually say.</li>
+                    <li>Competitor email teardowns loaded in so you know what angles are already saturated in your niche</li>
+                </ul>
+            </div>
+
+            <div class="part-block">
+                <h3>Part #2: Direct Response Email Framework Library</h3>
+                <p>This is where Email Cortex stops being a file organizer and becomes an email strategist.</p>
+                <p>We load proven direct response email frameworks built on 7+ years of copywriting and creative strategy. These aren't generic "ChatGPT prompts." These are the same frameworks responsible for generating millions in client revenue. Adapted specifically for email.</p>
+                <p><strong>You'll get:</strong></p>
+                <ul>
+                    <li>Subject line frameworks that get opens without triggering spam filters</li>
+                    <li>Emotional trigger systems that make readers feel something before you ever pitch</li>
+                    <li>Story-driven email structures that build trust AND sell</li>
+                    <li>The "Value + DR" method. How to send emails your audience loves that also convert</li>
+                    <li>Spam word avoidance protocols to improve deliverability</li>
+                    <li>CTA best practices to give a big oomph to your CTR</li>
+                    <li>Market awareness frameworks so your team knows exactly which angle to use based on where your subscriber is in the buying journey</li>
+                </ul>
+            </div>
+
+            <div class="part-block">
+                <h3>Part #3: Custom Email Briefs + Angle Reports</h3>
+                <p>Here's where it gets powerful. We generate custom reports that connect the frameworks to YOUR specific customer data. These become the cheat sheets your team uses every week.</p>
+                <p>Each Email Cortex comes with briefs that answer: "What should we email about this week?" "What hooks haven't we tried?" "What customer pain points are we ignoring?" "What stories from the founder would resonate right now?"</p>
+                <p><strong>You'll get:</strong></p>
+                <ul>
+                    <li>100+ email angle ideas generated from your actual customer data and DR frameworks</li>
+                    <li>Pre-built email briefs for ChatGPT, Claude, or Gemini that your copywriter or VA can run with</li>
+                    <li>Voice guidelines so every email sounds like it came from the founder. Not from a ghostwriter, human or not.</li>
+                    <li>A repeatable process your team uses to generate fresh angles every single week. Not just a one-time dump.</li>
+                </ul>
+            </div>
+
+            <div class="part-block">
+                <h3>Part #4: SOPs + Team Training</h3>
+                <p>Email Cortex only works if your team actually uses it. That's why we include complete training for copywriters, content managers, and VAs.</p>
+                <p>Your team will know exactly how to pull angles from the system. How to generate email briefs that sound like the founder wrote them. How to use Claude or Gemini with the briefs as input so even AI-generated drafts come out on-brand and persuasive.</p>
+                <p><strong>You'll get:</strong></p>
+                <ul>
+                    <li>Copywriter workflows (how to go from "blank page" to "ready to send" in 30 minutes)</li>
+                    <li>VA protocols (how to pull angles, generate briefs, and draft emails without creative experience)</li>
+                    <li>AI writing guidelines (how to use Claude/Gemini with Email Cortex output so the drafts actually sound human)</li>
+                    <li>A weekly email ideation process your team repeats forever. Not a one-time setup that gathers dust.</li>
+                </ul>
+            </div>
+
+            <div class="part-block extra-block">
+                <h3>Extra #1: Google Workspace Integration</h3>
+                <p>Email Cortex isn't another tool to log into. It lives inside your Google Workspace. Your team already uses Google every day. Now they have an email brain sitting right next to their Docs, Sheets, and Drive. No new logins. No new subscriptions.</p>
+            </div>
+
+            <div class="part-block extra-block">
+                <h3>Extra #2: Founder Voice Capture Session</h3>
+                <p>We don't just upload documents and hope for the best. We run a dedicated session to extract the founder's voice, stories, opinions, and personality. The stuff that makes your brand impossible to copy. This gets loaded directly into the system so every output sounds like the founder.</p>
+            </div>
+
+            <div class="part-block extra-block">
+                <h3>Extra #3: Full, Secure Ownership - No Monthly Subscriptions</h3>
+                <p>We install it once, you own it completely. It's part of your system, and requires no maintenance nor recurring payments. Also since it's a closed system, you don't have to worry about sensitive data leaking to unknown third-party app developers. And once we're done, we delete everything on our end. Guaranteed by contract.</p>
+            </div>
+        </div>
+    </section>
+
+    <div class="section-divider"></div>
+
+    <!-- Testimonials -->
+    <section class="testimonials-section">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-label">Here's Proof My Stuff Works</span>
+            </div>
+
+            <div class="testimonial-card">
+                <blockquote>"I would HIGHLY recommend Maarten for building AI tools/workflows for your business. The guy downloaded my mind and <strong>created a golden agentic workflow</strong> to help my clients create sales pages."</blockquote>
+                <div class="testimonial-author">
+                    <span class="name">Zac Hansen</span><br>
+                    <span class="title">7-Figure Productized Coach</span>
+                </div>
+            </div>
+
+            <div class="testimonial-card">
+                <blockquote>"My client's ad creatives were slowly fatiguing and I needed new scripts ASAP. Maarten did the research, crafted multiple scripts, and came up with new big ideas that I had never considered. <strong>The ads made from Maarten's scripts have been part of our control group for over 6 months now.</strong>"</blockquote>
+                <div class="testimonial-author">
+                    <span class="name">Joshua Gatewood</span><br>
+                    <span class="title">Mass Conversions Digital</span>
+                </div>
+            </div>
+
+            <div class="testimonial-card">
+                <blockquote>"Maarten is one of those rare people who just gets how to build sales funnels that work. We've done it together on multiple 7-figure projects. He's brilliant at writing copy that connects, coming up with marketing strategies that drive results, and fine-tuning funnels to maximise performance."</blockquote>
+                <div class="testimonial-author">
+                    <span class="name">Darius Lukas</span><br>
+                    <span class="title">Hyper Entrepreneur</span>
                 </div>
             </div>
         </div>
@@ -1267,76 +895,93 @@
 
     <div class="section-divider"></div>
 
-    <section class="about-section" id="about">
+    <!-- Guarantee -->
+    <section class="guarantee-section">
         <div class="container">
-            <div class="about-grid">
-                <div class="about-card">
-                    <div class="label">The Operator</div>
-                    <h3>Maarten Vaerewijck</h3>
-                    <img src="../assets/MeBWtp.png" alt="Maarten Vaerewijck" class="profile-pic">
-                </div>
-
-                <div class="about-text">
-                    <p>Here's why Founder Cortex works: it's built on <strong>7+ years of direct response copy</strong> I wrote for brands spending <strong>$1M+/month on ads</strong>.</p>
-
-                    <p>VSLs. Emails. Landers. Ad scripts. For 8 and 9-figure DTC brands like <strong>4Patriots</strong>, <strong>LifeVac</strong>, and <strong>ShopSolar</strong>.</p>
-
-                    <p>I was <strong>CMO for Darius Lukas</strong> — a 7-figure personal brand. We launched multiple 7-figure funnels in 9 months. One hit <strong>$66k profit in 10 days</strong>.</p>
-
-                    <p>As Chief Creative Strategist, my ads have hit <strong>10%+ CTR</strong> and <strong>3+ ROAS</strong>.</p>
-
-                    <p>People pay me to come up with big ideas that print money. That's what I do.</p>
-
-                    <p>Problem is: <strong>you can't hire me full-time.</strong></p>
-
-                    <p>And here's what I've seen over and over: <strong>founders like you are stuck</strong> reviewing every email, rewriting every ad, re-briefing every VA.</p>
-
-                    <p>Why? Because nobody on your team can capture your voice or think from your customer's perspective the way you do.</p>
-
-                    <p>It's not like it's a bad team... they just don't have access to what's inside your head.</p>
-
-                    <p><strong>Founder Cortex fixes that.</strong></p>
-
-                    <p>It captures your voice, your audience's psychology, and your direct response frameworks into a system your team can use 24/7.</p>
-
-                    <p>Your copywriter writes emails that sound like you.<br>
-                    Your VA creates ads informed by real customer pain points.<br>
-                    Your marketers generate ideas you actually love.</p>
-
-                    <p><strong>While you are off-grid, 99%* disconnected from your business</strong></p>
-
-                    <p><em>(* because founders can never totally let go, right?)</em></p>
-                </div>
+            <div class="guarantee-box">
+                <span class="section-label">Risk-Free</span>
+                <h2>Get Better Emails or Get Your Money Back</h2>
+                <p>Try Email Cortex out...</p>
+                <p>You can have your email brain installed and your team trained within the next 2 weeks.</p>
+                <p>And if you don't see faster output, more on-brand emails, and a team that finally stops asking you "what should we send this week?" within 30 days, send my support team an email and you'll get a full refund.</p>
+                <p>I can confidently say this because I've personally used this system as CMO for a 7-figure brand. The founder left for 14 days. The emails kept going. They performed better. He joked he wasn't coming back.</p>
+                <p><strong>Try it out and watch what happens.</strong></p>
             </div>
         </div>
     </section>
 
-    <section class="cta-section" id="contact">
+    <div class="section-divider"></div>
+
+    <!-- CTA Section -->
+    <section class="cta-section" id="demo">
         <div class="container">
-            <div class="cta-content">
-                <span class="section-label">Get Started</span>
-                <img src="../assets/LogoTP1.png" alt="Client Cortex" class="cta-logo">
-                <h2>Ready to Install Founder Cortex?</h2>
-                <p>You built your brand on your voice and your vision. Founder Cortex makes sure your team can execute both — without you micromanaging every word.</p>
-                <a href="mailto:Maarten@ClientCortex.EU" class="cta-button cta-icon-only pulse">
-                    <svg width="24" height="24" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
-                    </svg>
-                </a>
-                <p class="email-text"><strong>Maarten@ClientCortex.EU</strong></p>
-                <p class="linkedin-text">Or connect on LinkedIn and send me a DM</p>
-                <a href="https://www.linkedin.com/in/creativestrategy" target="_blank" rel="noopener noreferrer" class="linkedin-link">
-                    <svg width="32" height="32" viewBox="0 0 24 24" fill="currentColor">
-                        <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
-                    </svg>
-                </a>
+            <span class="section-label">Here's What To Do Now</span>
+            <h2>Ready to Give Your Team an Unlimited Source of Email Ideas?</h2>
+            <p>In your voice. Built on frameworks that have driven millions in revenue.</p>
+            <p>All you have to do is click the button below to book a quick 9-minute demo. I'll show you exactly how Email Cortex works for your specific brand, your audience, and your team.</p>
+            <a href="mailto:Maarten@ClientCortex.EU" class="cta-button pulse">Book Your 9-Minute Email Cortex Demo →</a>
+            <p style="margin-top: 32px;">Watch what happens when your team never runs out of email ideas and every send sounds like the founder wrote it.</p>
+            <p>Your future self (and your inbox revenue) will thank you.</p>
+            <div class="signature">
+                <p>Chat soon,</p>
+                <p><strong>Maarten</strong></p>
+            </div>
+        </div>
+    </section>
+
+    <div class="section-divider"></div>
+
+    <!-- FAQ -->
+    <section class="faq-section">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-label">FAQ</span>
+            </div>
+
+            <div class="faq-item">
+                <h3>Q: How is this different from just using ChatGPT or Claude for emails?</h3>
+                <p>ChatGPT and Claude are connected to the internet and trained to fill in the blanks. They'll confidently write emails using customer language that doesn't exist and a brand voice they're guessing at. Email Cortex can ONLY reference the sources you give it. Your real reviews. Your real voice. Your real frameworks. If it doesn't know something, it tells you instead of making it up. Plus, you can use it to make ChatGPT and Claude better at writing your emails.</p>
+            </div>
+
+            <div class="faq-item">
+                <h3>Q: Does Email Cortex actually write the emails?</h3>
+                <p>No. Email Cortex is the brain, not the hands. It generates the briefs, angles, hooks, and voice guidelines your team uses to write. They can write manually or use those briefs as input for Claude or Gemini to draft. Either way, the thinking is done. Your team (or AI writer) just executes.</p>
+            </div>
+
+            <div class="faq-item">
+                <h3>Q: Is my data secure?</h3>
+                <p>Yes. Email Cortex is built on Google Workspace architecture and powered by Google's AI. Your data stays within your Google Workspace environment. It's not used to train public AI models. Each Email Cortex is isolated to your specific brand.</p>
+            </div>
+
+            <div class="faq-item">
+                <h3>Q: What if my team isn't tech-savvy?</h3>
+                <p>That's exactly why we include SOPs and training. The system lives inside Google Workspace, which your team already uses. Most teams are pulling angles and writing emails within 3 days of installation.</p>
+            </div>
+
+            <div class="faq-item">
+                <h3>Q: How long does installation take?</h3>
+                <p>About 2 weeks from kickoff to your team being trained and using the system. The timeline depends on how quickly you can share access to your customer data and founder content.</p>
+            </div>
+
+            <div class="faq-item">
+                <h3>Q: What if we already have a copywriter? Do we still need this?</h3>
+                <p>Especially if you have a copywriter. Email Cortex doesn't replace them. It makes them 3x faster and 10x more consistent. Instead of spending hours researching angles and trying to match the founder's voice, they open the system, pull a brief, and write. The thinking is done for them.</p>
+            </div>
+
+            <div class="faq-item">
+                <h3>Q: Can this work for ecommerce, coaching, SaaS, or other industries?</h3>
+                <p>Email Cortex works for any brand that sends emails to sell. The system is customized to YOUR audience and YOUR voice during installation. If within 30 days you feel it's not working for your industry, you get a full refund under the guarantee.</p>
+            </div>
+
+            <div style="text-align: center; margin-top: 48px;">
+                <a href="mailto:Maarten@ClientCortex.EU" class="cta-button pulse">Book Your 9-Minute Email Cortex Demo →</a>
             </div>
         </div>
     </section>
 
     <footer>
         <div class="container">
-            <p>&copy; 2026 Founder Cortex by Client Cortex. All Rights Reserved. Made by <a href="https://vaerewijck.com" target="_blank" rel="noopener noreferrer">Maarten Vaerewijck</a></p>
+            <p>&copy; 2026 Email Cortex by Client Cortex. All Rights Reserved. Made by <a href="https://vaerewijck.com" target="_blank" rel="noopener noreferrer">Maarten Vaerewijck</a></p>
         </div>
     </footer>
 </body>
